@@ -21,7 +21,7 @@ export const SocialLinks = (
       ...socialIconsProps,
       icon: <FacebookOutlineIcon />,
       href: {
-        to: "https://www.facebook.com/profile.php?id=100086170263866",
+        to: "https://www.facebook.com/dikshit.dikshit.503/",
         options: { target: "_blank" },
       },
       socialName: "facebook",
@@ -29,13 +29,17 @@ export const SocialLinks = (
     {
       ...socialIconsProps,
       icon: <TwitterOutlineIcon />,
+      href: {
+        to: "https://twitter.com/dikshit___n/",
+        options: { target: "_blank" },
+      },
       socialName: "twitter",
     },
     {
       ...socialIconsProps,
       icon: <LinkedinOutlineIcon />,
       href: {
-        to: "https://www.linkedin.com/company/nanbann/",
+        to: "https://www.linkedin.com/in/dikshitkumar-n-b66177199/",
         options: { target: "_blank" },
       },
       socialName: "linkedin",
@@ -43,6 +47,10 @@ export const SocialLinks = (
     {
       ...socialIconsProps,
       icon: <InstagramOutlineIcon />,
+      href: {
+        to: "https://www.instagram.com/dikshit___n/",
+        options: { target: "_blank" },
+      },
       socialName: "instagram",
     },
   ];

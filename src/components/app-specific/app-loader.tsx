@@ -15,10 +15,10 @@ const StyledApploaderWrapper = styled(XYCenter)`
 `;
 
 export const AppLoader = () => {
-	return (
-		<StyledApploaderWrapper>
-			<img src={AppLogoMiniImage} alt="Nanban Logo Mini" />
-			<Spinner />
-		</StyledApploaderWrapper>
-	);
+  return (
+    <StyledApploaderWrapper>
+      <img src={AppLogoMiniImage} alt="App Logo Mini" />
+      <Spinner />
+    </StyledApploaderWrapper>
+  );
 };

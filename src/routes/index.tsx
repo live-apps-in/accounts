@@ -13,7 +13,7 @@ export const routes: ROUTE_DEFINITION[] = [
     element: (
       <>
         <Helmet>
-          <title>Nanban</title>
+          <title>App Title</title>
         </Helmet>
         <Public>
           <AuthLayout>

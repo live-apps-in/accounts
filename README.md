@@ -1,4 +1,6 @@
-# Nanban
+# BoilerPlate
+
+### React JS, Fluent UI, Social Authentication
 
 ## Local setup
 
@@ -30,7 +32,7 @@
 
 ### Example of a commit message:
 
-    feat(SAGE-AKT-1): first_commit
+    feat(LIVE-LIV-1): first_commit
 
 ## Branch name format
 
@@ -39,4 +41,4 @@
 
 ### Example of a branch name:
 
-    feat/SAGE-AKT-1_add_auth
+    feat/LIVE-LIV-1_add_auth
