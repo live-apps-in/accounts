@@ -1,4 +1,8 @@
-# BoilerPlate
+# Accounts - Live Apps
+
+Authentication service for apps under live apps
+
+## Technologies Used
 
 ### React JS, Fluent UI, Social Authentication
 
