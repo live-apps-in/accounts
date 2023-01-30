@@ -14,8 +14,7 @@ export const authConfig = {
 };
 
 export const projectConfig = {
-  title: "Project Title",
-  baseURL: process.env.REACT_APP_BASE_URL,
+  title: "Live Apps - Accounts",
   defaultTheme: "pure-light-theme",
   defaultPhonenumberCountry: "IN" as any,
   appBaseurl: window.location.origin,

@@ -6,6 +6,6 @@ export * from "./useUniqueKey";
 export * from "./useAuth";
 export * from "./useQueryState";
 export * from "./useTextFile";
-export * from "./useLiveAppsAuth";
+export * from "./useAccountsAuth";
 
 export { useSelector, useDispatch };

@@ -1,6 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { getCookie } from "src/utils";
-import { authConfig, msalErrorMessage, projectConfig } from "src/config";
+import { msalErrorMessage } from "src/config";
 import { BrowserAuthError } from "@azure/msal-browser";
 
 export const getError = (errorObject?: Error | AxiosError) => {
@@ -38,44 +37,6 @@ export const getError = (errorObject?: Error | AxiosError) => {
   }
   return error;
 };
-
-// refer https://github.com/live-apps-in/ping-client/blob/main/src/api/gateway/default-gateway.ts for refresh token concept
-// creating axios instance
-export const axiosInstance = axios.create({
-  baseURL: projectConfig.baseURL,
-});
-
-// setting token in header for each request
-axiosInstance.interceptors.request.use(
-  (config) => {
-    const token = getCookie(authConfig.tokenAccessor); // getting token from cookies
-    if (token && config.headers)
-      config.headers["Authorization"] = `Bearer ${token}`;
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
-
-// globally logout the user, if 401 occurs
-// axiosInstance.interceptors.response.use(undefined, async (error) => {
-//   // logout if unauthenticated or token expired
-//   if (error.response?.status === 401) {
-//     // don't redirect to logout route if the current page is a public page or login page
-//     if (
-//       !isPublicRoute(window.location.pathname) &&
-//       !isAuthRoute(window.location.pathname)
-//     ) {
-//       deleteCookie('token');
-//       window.location.pathname = '/auth/login';
-//     }
-//     //   window.location.href = '/logout';
-//   }
-//   return Promise.reject(error);
-// });
-
-// configuration to get upload progress(in percentage)
 
 export const withUploadProgress = (callBack: Function) => {
   return {

@@ -1,11 +1,10 @@
 import { EXAMPLE_API_RESPONSE } from "src/model";
-import { axiosInstance, createApiFunction } from "src/utils";
+import { createApiFunction } from "src/utils";
+import { gateway } from "./gateway";
 
 class ExampleApi {
   register(data: EXAMPLE_API_RESPONSE) {
-    return createApiFunction(() =>
-      axiosInstance.post("/example/register", data)
-    );
+    return createApiFunction(() => gateway.post("/example/register", data));
   }
 }
 

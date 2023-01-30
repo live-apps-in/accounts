@@ -14,7 +14,7 @@ export const publicRoutes: ROUTES_DEFINITION = [
     element: (
       <>
         <Helmet>
-          <title>Liveapps Login Page</title>
+          <title>Liveapps - Login</title>
         </Helmet>
         <PublicLayout>
           <LoginPortalContent />
@@ -27,7 +27,7 @@ export const publicRoutes: ROUTES_DEFINITION = [
     element: (
       <>
         <Helmet>
-          <title>Liveapps Signup Page</title>
+          <title>Liveapps - Signup</title>
         </Helmet>
         <PublicLayout>
           <SignupPortalContent />

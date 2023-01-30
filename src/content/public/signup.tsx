@@ -9,7 +9,7 @@ import {
   RecursiveContainer,
 } from "src/components";
 import { authConfig } from "src/config";
-import { useLiveAppsAuth } from "src/hooks";
+import { useAccountsAuth } from "src/hooks";
 import { liveAppsAccountsPortalSignupSchema } from "src/schema";
 import { appendSearchString, getSearchQuery, handleError } from "src/utils";
 
@@ -18,7 +18,7 @@ export const SignupPortalContent: React.FC = () => {
   const { search } = useLocation();
   const navigate = useNavigate();
   const searchQuery = getSearchQuery(search);
-  const { signup } = useLiveAppsAuth();
+  const { signup } = useAccountsAuth();
   const [error, setError] = useState(null);
 
   useEffect(() => {

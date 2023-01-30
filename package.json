@@ -1,7 +1,10 @@
 {
-  "name": "boilerplate_reactjs_fluent-ui",
+  "name": "accounts-liveapps",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "repository": {
+    "url": "https://github.com/live-apps-in/accounts.git"
+  },
   "dependencies": {
     "@azure/msal-browser": "^2.28.1",
     "@fluentui/react-components": "^9.2.0",

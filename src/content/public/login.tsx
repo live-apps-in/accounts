@@ -9,7 +9,7 @@ import {
   RecursiveContainer,
 } from "src/components";
 import { authConfig } from "src/config";
-import { useLiveAppsAuth } from "src/hooks";
+import { useAccountsAuth } from "src/hooks";
 import { liveAppsAccountsPortalSigninSchema } from "src/schema";
 import { appendSearchString, getSearchQuery, handleError } from "src/utils";
 
@@ -18,7 +18,7 @@ export const LoginPortalContent: React.FC = () => {
   const { search } = useLocation();
   const searchQuery = getSearchQuery(search);
   const navigate = useNavigate();
-  const { login } = useLiveAppsAuth();
+  const { login } = useAccountsAuth();
   const [error, setError] = useState(null);
 
   useEffect(() => {

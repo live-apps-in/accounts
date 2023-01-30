@@ -4,7 +4,7 @@ import { CustomButton, CustomCard, CustomText } from "src/components";
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { appendSearchString, getSearchQuery, handleError } from "src/utils";
-import { useLiveAppsAuth } from "src/hooks";
+import { useAccountsAuth } from "src/hooks";
 import { authConfig } from "src/config";
 
 const StyledOTPPageContainer = styled("div")`
@@ -28,7 +28,7 @@ export const OTPPortal = () => {
   const { search } = useLocation();
   const searchQuery: any = getSearchQuery(search);
   const { email = "" } = useParams();
-  const { validateOTP, login } = useLiveAppsAuth();
+  const { validateOTP, login } = useAccountsAuth();
   const [otp, setOtp] = useState("");
   const [error, setError] = useState(null);
 

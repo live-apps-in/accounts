@@ -1,9 +1,10 @@
 import { USER_PROFILE } from "src/model";
-import { axiosInstance, createApiFunction } from "src/utils";
+import { createApiFunction } from "src/utils";
+import { gateway } from "./gateway";
 
 class UserApi {
   fetchProfile(): Promise<USER_PROFILE> {
-    return createApiFunction(() => axiosInstance.get("/user/profile"));
+    return createApiFunction(() => gateway.get("/user/profile"));
   }
 }
 

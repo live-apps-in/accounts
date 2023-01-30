@@ -4,7 +4,7 @@ Authentication service for apps under live apps
 
 ## Technologies Used
 
-### React JS, Fluent UI, Social Authentication
+### React JS, Fluent UI, Redux Toolkit, Social Authentication
 
 ## Local setup
 

@@ -1,10 +1,10 @@
-import { axiosInstance } from "src/utils";
-import Papa from 'papaparse';
+import Papa from "papaparse";
+import { gateway } from "src/api";
 
 export const imageUrlToBase64 = async (url) => {
   try {
     if (url && url.startsWith("http")) {
-      let image = await axiosInstance.post("/services/image_to_base64", {
+      let image = await gateway.post("/services/image_to_base64", {
         url,
       });
       const { raw } = image.data;
@@ -93,7 +93,7 @@ export async function parseCSVFile(
     dynamicTyping = true,
     comments = false,
     skipEmptyLines = true,
-    transformHeader = (header) => header
+    transformHeader = (header) => header,
   } = {}
 ) {
   return new Promise((resolve, reject) => {
@@ -108,7 +108,7 @@ export async function parseCSVFile(
       transformHeader,
       preview,
       dynamicTyping,
-      comments
+      comments,
     });
   });
 }
