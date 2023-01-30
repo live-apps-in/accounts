@@ -1,7 +1,7 @@
 import { EventEmitter } from "src/utils";
 import { useEffect } from "react";
 // import { Alert, AlertProps } from "@fluentui/react-components/unstable";
-// import styled from "styled-components";
+// import { styled } from "src/utils";
 import { useToasts, Options } from "react-toast-notifications";
 
 // flash event

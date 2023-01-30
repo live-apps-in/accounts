@@ -1,6 +1,6 @@
 import { Actions } from "./actions";
 import { Logo } from "./logo";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { NAVIGATION_LINKS } from "src/routes";
 import { YCenter, JustifyBetween } from "src/components";
 

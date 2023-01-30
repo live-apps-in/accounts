@@ -2,7 +2,7 @@
 import { Label, LabelProps, Text, TextProps } from "@fluentui/react-components";
 import { To, LinkProps } from "react-router-dom";
 import { customizedTheme as theme } from "src/theme";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { CustomLink } from "./custom-link";
 
 interface TEXT_PROPS {

@@ -2,7 +2,7 @@
 // In other words, app-specific model definitions goes here
 
 import { FLASH_EVENT_PROPS, MODAL_EVENT_PROPS } from "src/components";
-import { AUTH_PROVIDER } from "src/data";
+import { AUTH_PROVIDER } from "src/config";
 
 // redux
 // #rbac-setup
@@ -33,6 +33,11 @@ export interface INITIALIZE_ACTION {
   isAuthenticated: boolean;
   data: AUTH_DATA | null;
 }
+
+export type API_HEADER_AUTH_DETAILS = {
+  token: string;
+  refreshToken: string;
+};
 
 // users
 export interface USER_STATE {
@@ -73,6 +78,32 @@ export interface USE_AUTH_RETURN_TYPE extends AUTH_STATE {
   ) => Promise<AUTH_DATA>;
   logout: (options?: USE_AUTH_OPTIONS) => Promise<void>;
 }
+
+// ---------------------------------------------------------------- //
+
+// live apps auth
+//.. login
+export type LIVE_APPS_LOGIN_DETAILS = {
+  email: string;
+};
+
+//.. signup
+export type LIVE_APPS_SIGNUP_DETAILS = {
+  name: string;
+  email: string;
+};
+
+//.. validate OTP details
+export type LIVE_APPS_VALIDATE_OTP_DETAILS = {
+  email: string;
+  otp: string;
+};
+
+//.. validate OTP response
+export type LIVE_APPS_VALIDATE_OTP_RESPONSE = {
+  refreshToken: string;
+  token: string;
+};
 
 // ---------------------------------------------------------------- //
 

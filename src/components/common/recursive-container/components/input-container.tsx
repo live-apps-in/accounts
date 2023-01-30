@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { CustomFormFieldMessage } from "src/components";
 import { CustomFormFieldLabel } from "../../custom-form-field-label";
 
@@ -34,7 +34,11 @@ export const InputContainer: React.FC<INPUT_CONTAINER_PROPS> = (props) => {
   return (
     <StyledInputContainerWrapper {...rest}>
       {!!label && (
-        <CustomFormFieldLabel label={label} required={required} htmlFor={htmlFor} />
+        <CustomFormFieldLabel
+          label={label}
+          required={required}
+          htmlFor={htmlFor}
+        />
       )}
       {addon && position === "up" && component}
       {props.children}

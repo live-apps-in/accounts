@@ -1,4 +1,5 @@
 import queryString from "query-string";
+import { routeDefinition } from "src/routes";
 import { ignoreEmptyObject } from "./object-utils";
 
 export const isActiveRoute = ({
@@ -11,6 +12,24 @@ export const isActiveRoute = ({
   path = getValidRouteName(path);
   route = getValidRouteName(route);
   return path === route;
+};
+
+export const isPublicRoute = (pathname: string) => {
+  if (pathname) {
+    return !!routeDefinition.public.find(
+      (route) =>
+        removeSlashAtTerminals(route.path) === removeSlashAtTerminals(pathname)
+    );
+  }
+};
+
+export const isAuthRoute = (pathname: string) => {
+  if (pathname) {
+    return !!routeDefinition.auth.find(
+      (route) =>
+        removeSlashAtTerminals(route.path) === removeSlashAtTerminals(pathname)
+    );
+  }
 };
 
 export const getValidRouteName = (pathname: string) => {
@@ -85,6 +104,32 @@ export const getSearchQueryFromUrl = (
   return searchObject;
 };
 
+export const appendSearchString = (
+  searches: (string | object)[],
+  options?: { returnAs?: "string" | "query"; prefixQuestionMark?: boolean }
+): string | object => {
+  const { returnAs = "string", prefixQuestionMark = false } = options || {};
+  let searchObject: object = {};
+  searches.forEach((search) => {
+    if (search) {
+      if (typeof search === "string") {
+        searchObject = {
+          ...searchObject,
+          ...getSearchQuery(search),
+        };
+      } else {
+        searchObject = {
+          ...searchObject,
+          ...search,
+        };
+      }
+    }
+  });
+  return returnAs === "string"
+    ? `${prefixQuestionMark ? "?" : ""}${getSearchString(searchObject)}`
+    : searchObject;
+};
+
 export const getCompleteUrl = (route: string) => {
   const baseurl = removeSlashAtLast(window.location.origin);
   if (route) {
@@ -104,6 +149,23 @@ export const removeSlashAtLast = (route: string) => {
     while (route.endsWith("/")) {
       route = route.slice(0, -1);
     }
+  }
+  return route;
+};
+
+export const removeSlashAtStart = (route: string) => {
+  if (route !== "/") {
+    while (route.startsWith("/")) {
+      route = route.slice(1);
+    }
+  }
+  return route;
+};
+
+export const removeSlashAtTerminals = (route: string) => {
+  if (route !== "/") {
+    route = removeSlashAtStart(route);
+    route = removeSlashAtLast(route);
   }
   return route;
 };

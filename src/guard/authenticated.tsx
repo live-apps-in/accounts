@@ -1,4 +1,4 @@
-import { authSetup } from "src/data";
+import { authConfig } from "src/config";
 import { useAuth } from "src/hooks";
 // import { useOAuth } from "src/hooks";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ export const Authenticated: React.FunctionComponent<{
 
   useEffect(() => {
     if (!isAuthenticated || !data) {
-      const url = `${authSetup.authPage}?backToURL=${pathname}`;
+      const url = `${authConfig.authPage}?backToURL=${pathname}`;
       navigate(url);
     } else {
       const userRole = data?.role;

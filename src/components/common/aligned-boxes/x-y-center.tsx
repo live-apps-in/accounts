@@ -1,16 +1,16 @@
-import styled from "styled-components";
+import { styled } from "src/utils";
 
 const StyledXYCenterWrapper = styled("div")((props) => ({
-	display: "flex",
-	justifyContent: "center",
-	alignItems: "center",
-	...props.style,
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  ...props.style,
 }));
 
 export const XYCenter: React.FC<
   React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 > = (props) => {
-	return (
-		<StyledXYCenterWrapper {...props}>{props.children}</StyledXYCenterWrapper>
-	);
+  return (
+    <StyledXYCenterWrapper {...props}>{props.children}</StyledXYCenterWrapper>
+  );
 };

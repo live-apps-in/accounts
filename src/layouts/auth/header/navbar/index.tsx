@@ -6,7 +6,7 @@ import { useUniqueKey } from "src/hooks";
 import { NAVIGATION_LINKS } from "src/routes";
 import { customizedTheme as theme, mediaQuery } from "src/theme";
 import { getValidRouteName, removeSlashAtLast } from "src/utils";
-import styled from "styled-components";
+import { styled } from "src/utils";
 
 interface NAVBAR_PROPS {
   navigationLinks?: NAVIGATION_LINKS;
@@ -47,24 +47,26 @@ export const Navbar: React.FC<NAVBAR_PROPS> = ({ navigationLinks = [] }) => {
       >
         {navigationLinks.map((el, index) => (
           <StyledTab key={keys[index]} value={el.path}>
-            {
-              el.children ? 
-                <CustomDropdown
-                  appearance="transparent"
-                  placeholder={el.name}
-                  style={{border: 'none'}}
-                  isNav
-                  selectedOptions={[removeSlashAtLast(updatedPathname)]}
-                  options={el.children.map((el) => ({
-                    value: el.path,
-                    label: el.name,
-                  }))}
-                  onChange={({ target: { value } }) => navigate(getValidRouteName(value))}
-                />
-                : <CustomText href={el.path} as="h5" style={{ fontWeight: "bold" }}>
-                    {el.name}
-                  </CustomText>
-            }
+            {el.children ? (
+              <CustomDropdown
+                appearance="transparent"
+                placeholder={el.name}
+                style={{ border: "none" }}
+                isNav
+                selectedOptions={[removeSlashAtLast(updatedPathname)]}
+                options={el.children.map((el) => ({
+                  value: el.path,
+                  label: el.name,
+                }))}
+                onChange={({ target: { value } }) =>
+                  navigate(getValidRouteName(value))
+                }
+              />
+            ) : (
+              <CustomText href={el.path} as="h5" style={{ fontWeight: "bold" }}>
+                {el.name}
+              </CustomText>
+            )}
           </StyledTab>
         ))}
       </TabList>

@@ -4,8 +4,12 @@ import { MouseEventHandler, useState } from "react";
 import { IMAGE_DETAILS } from ".";
 import { FileInput } from "src/components/common/recursive-container/components/file-input";
 import { StepWizardChildProps } from "react-step-wizard";
-import styled from "styled-components";
-import { Dialog, DialogBody, DialogSurface } from "@fluentui/react-components/unstable";
+import { styled } from "src/utils";
+import {
+  Dialog,
+  DialogBody,
+  DialogSurface,
+} from "@fluentui/react-components/unstable";
 
 const StepContentWrapper = styled(({ children, ...props }: any) => (
   <Dialog {...props} open aria-label="modal">
@@ -50,7 +54,7 @@ export const FileUpload: React.FC<FILE_UPLOAD_PROPS & any> = (props) => {
               appearance="outline"
               color="secondary"
               icon={<ChevronRight24Filled />}
-              iconPosition='after'
+              iconPosition="after"
               onClick={withStepWizardProps.nextStep}
             >
               Continue Editing
@@ -58,7 +62,11 @@ export const FileUpload: React.FC<FILE_UPLOAD_PROPS & any> = (props) => {
           ) : (
             <div />
           )}
-          <CustomButton onClick={onClose} color="error" icon={<Dismiss24Filled />} />
+          <CustomButton
+            onClick={onClose}
+            color="error"
+            icon={<Dismiss24Filled />}
+          />
         </JustifyBetween>
         <CustomCard>
           <FileInput

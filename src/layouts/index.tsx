@@ -1,4 +1,4 @@
-export * from "./donor";
+export * from "./public";
 export * from "./auth";
 export * from "./admin";
 

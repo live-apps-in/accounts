@@ -6,7 +6,7 @@ import {
   Info24Filled,
   Warning24Filled,
 } from "@fluentui/react-icons";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { CustomText, CUSTOM_TEXT_PROPS } from "./custom-text";
 
 export interface CUSTOM_MESSAGE_PROPS {

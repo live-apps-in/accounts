@@ -7,7 +7,7 @@ import {
 import { useUniqueKey } from "src/hooks";
 import { CustomText } from "./custom-text";
 import { customizedTheme as theme } from "src/theme";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { capitalize } from "src/utils";
 
 export interface DROPDOWN_PROPS
@@ -28,8 +28,8 @@ const StyledDropdown = styled(Dropdown)((props) => {
   return {
     padding: 0,
     width: buttonStyle.width,
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     "::after": {
       display: "none",
     },
@@ -42,9 +42,9 @@ const StyledDropdown = styled(Dropdown)((props) => {
       margin: 0,
       marginRight: 0,
       ...(props.isNav && {
-        fontSize: '17px',
-        padding: "10px 20px"
-      })
+        fontSize: "17px",
+        padding: "10px 20px",
+      }),
     },
   };
 });
@@ -55,7 +55,7 @@ export const CustomDropdown: React.FC<DROPDOWN_PROPS> = ({
   options,
   onChange,
   variant,
-  appearance='primary',
+  appearance = "primary",
   ...rest
 }) => {
   const [id] = useUniqueKey(1);

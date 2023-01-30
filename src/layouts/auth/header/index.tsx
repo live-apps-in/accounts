@@ -1,7 +1,7 @@
 import { Actions } from "./actions";
 import { Logo } from "./logo";
 import { Navbar } from "./navbar";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { NAVIGATION_LINKS } from "src/routes";
 import {
   CustomButton,

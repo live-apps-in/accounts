@@ -1,15 +1,15 @@
-import styled from "styled-components";
+import { styled } from "src/utils";
 
 const StyledYCenterWrapper = styled("div")((props) => ({
-	display: "flex",
-	alignItems: "center",
-	...props.style,
+  display: "flex",
+  alignItems: "center",
+  ...props.style,
 }));
 
 export const YCenter: React.FC<
   React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 > = (props) => {
-	return (
-		<StyledYCenterWrapper {...props}>{props.children}</StyledYCenterWrapper>
-	);
+  return (
+    <StyledYCenterWrapper {...props}>{props.children}</StyledYCenterWrapper>
+  );
 };

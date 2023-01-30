@@ -7,7 +7,7 @@ import {
 import { Dropdown, Option } from "@fluentui/react-components/unstable";
 import { InputContainer } from "./input-container";
 import { useUniqueKey } from "src/hooks";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { customizedTheme as theme } from "src/theme";
 
 const StyledSelectMultiple = styled(Dropdown)(() => ({

@@ -1,8 +1,8 @@
 import { mediaQuery } from "src/theme";
-import styled from "styled-components";
+import { styled } from "src/utils";
 // import { useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
-// import { rbacSetup } from "src/data";
+// import { authConfig } from "src/config";
 
 const StyledHomePageWrapper = styled("div")`
   height: 100%;
@@ -16,9 +16,10 @@ export const HomePageContent = () => {
 
   // when home page is not a public page
   // useEffect(() => {
-  //   if(isAuthenticated && data?.role && rbacSetup.roles.includes(data.role)) {
-  //     navigate(rbacSetup.homePage[data.role])
-  //   }
+  // if(isAuthenticated && data?.role && rbacConfig.roles.includes(data.role)) {
+  //   navigate(rbacConfig.homePage[data.role])
+  // }
+  // navigate(rbacConfig)
   // }, [])
 
   return <StyledHomePageWrapper>Home Page</StyledHomePageWrapper>;

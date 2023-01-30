@@ -1,6 +1,6 @@
 import * as CSS from "csstype";
 import { PartialTheme, Theme } from "@fluentui/react-components";
-import { projectSetup } from "src/data";
+import { projectConfig } from "src/config";
 import * as Themes from "./variants";
 import { CUSTOM_BUTTON_PROPS } from "src/components";
 
@@ -139,9 +139,9 @@ export interface CUSTOM_THEME {
 export const getThemeName = () => {
   try {
     return (window.localStorage.getItem("theme") ||
-      projectSetup.defaultTheme) as THEME;
+      projectConfig.defaultTheme) as THEME;
   } catch {
-    return projectSetup.defaultTheme;
+    return projectConfig.defaultTheme;
   }
 };
 

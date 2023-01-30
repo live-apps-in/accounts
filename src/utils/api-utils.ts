@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { getCookie } from "src/utils";
-import { authSetup, msalErrorMessage, projectSetup } from "src/data";
+import { authConfig, msalErrorMessage, projectConfig } from "src/config";
 import { BrowserAuthError } from "@azure/msal-browser";
 
 export const getError = (errorObject?: Error | AxiosError) => {
@@ -42,13 +42,13 @@ export const getError = (errorObject?: Error | AxiosError) => {
 // refer https://github.com/live-apps-in/ping-client/blob/main/src/api/gateway/default-gateway.ts for refresh token concept
 // creating axios instance
 export const axiosInstance = axios.create({
-  baseURL: projectSetup.baseURL,
+  baseURL: projectConfig.baseURL,
 });
 
 // setting token in header for each request
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = getCookie(authSetup.tokenAccessor); // getting token from cookies
+    const token = getCookie(authConfig.tokenAccessor); // getting token from cookies
     if (token && config.headers)
       config.headers["Authorization"] = `Bearer ${token}`;
     return config;

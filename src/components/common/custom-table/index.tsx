@@ -14,7 +14,7 @@ import {
   EmptyMessage,
   // CUSTOM_PAGINATION_PROPS,
 } from "src/components";
-import styled from "styled-components";
+import { styled } from "src/utils";
 
 const TableComponentContainer = styled("div")`
   box-sizing: border-box;

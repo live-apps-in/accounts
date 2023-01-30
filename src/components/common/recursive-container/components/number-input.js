@@ -1,7 +1,7 @@
 import { Input } from "@fluentui/react-components";
 import NumberFormat from "react-number-format";
 import { customizedTheme as theme } from "src/theme";
-import styled from "styled-components";
+import { styled } from "src/utils";
 
 const StyledInput = styled(Input)(() => ({
   ...theme.components.Input,

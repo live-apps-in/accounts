@@ -2,7 +2,7 @@
 import React from "react";
 import { Input } from "@fluentui/react-components";
 import { CalendarLtr24Regular } from "@fluentui/react-icons";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { customizedTheme as theme } from "src/theme";
 
 const StyledInput = styled(Input)(() => ({

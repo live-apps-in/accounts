@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ImageEditorPopup } from "./image-editor-popup";
 import { DefaultAvatar } from "src/assets";
 import clsx from "clsx";
-import styled from "styled-components";
+import { styled } from "src/utils";
 
 const AvatarWrapper = styled("div")`
   position: relative;

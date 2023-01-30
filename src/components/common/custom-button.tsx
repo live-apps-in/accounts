@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { To, useNavigate } from "react-router-dom";
 import { customizedTheme as theme, STYLES } from "src/theme";
 import {

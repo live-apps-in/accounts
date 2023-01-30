@@ -4,7 +4,7 @@
 export const UserRolePageContent = () => {
   // const navigate = useNavigate();
 
-  // navigate to the home page of this role from rbacSetup.homePage.userRole
+  // navigate to the home page of this role from rbacConfig.homePage.userRole
   // useEffect(() => {
   //   // navigate to donor login's homescreen, when user visits /donor page
   //   navigate("/donor/register");

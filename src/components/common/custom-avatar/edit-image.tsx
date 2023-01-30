@@ -1,7 +1,5 @@
 import { useState } from "react";
-import {
-  Divider,
-} from "@fluentui/react-components";
+import { Divider } from "@fluentui/react-components";
 import { Dismiss24Filled } from "@fluentui/react-icons";
 import AvatarEditor from "react-avatar-editor";
 import {
@@ -9,7 +7,7 @@ import {
   FlexRow,
   RecursiveContainer,
   JustifyBetween,
-  CustomText
+  CustomText,
 } from "src/components";
 import { useRef } from "react";
 import { useEffect } from "react";
@@ -17,8 +15,12 @@ import { getError, imageUrlToBase64 } from "src/utils";
 import { CONFIG_TYPE } from "src/components";
 import { useFormik } from "formik";
 import { CardSpinner } from "../../app-specific/card-spinner";
-import styled from "styled-components";
-import { Dialog, DialogBody, DialogSurface } from "@fluentui/react-components/unstable";
+import { styled } from "src/utils";
+import {
+  Dialog,
+  DialogBody,
+  DialogSurface,
+} from "@fluentui/react-components/unstable";
 import { DefaultAvatar } from "src/assets";
 
 const StepContentWrapper = styled(({ children, ...props }: any) => (
@@ -133,61 +135,67 @@ export const EditImage = ({
 
   return (
     <StepContentWrapper open>
-        <JustifyBetween 
-          // align="center"
+      <JustifyBetween
+        // align="center"
         style={{ marginBottom: 1 }}
-        >
-          <CustomText as="h4">Edit Image</CustomText>
-          <CustomButton onClick={onClose} color="error" icon={<Dismiss24Filled />} />
-        </JustifyBetween>
-        {processing ? (
-          <div style={{ width: 200 }}>
-            <CardSpinner />
-          </div>
-        ) : (
-          <>
-            <AvatarEditor
-              ref={imageRef}
-              image={processedFileDetials?.base64 || DefaultAvatar}
-              width={150}
-              height={150}
-              border={30}
-              borderRadius={100}
-              color={[57, 57, 57, 0.388]} // RGBA
-              disableDrop
-              {...formik.values}
-            />
-            <CustomText style={{ marginTop: 1, marginBottom: 1 }} as="h5">
-              Options
-            </CustomText>
-            <Divider />
-            <form onSubmit={formik.handleSubmit}>
-              <RecursiveContainer config={settingsFields} formik={formik} />
-                <FlexRow style={{ flexWrap: "wrap" }}>
-                  <CustomButton
-                    appearance="subtle"
-                    onClick={handleSubmit}
-                    loading={processingEdit}
-                  >
-                    Done
-                  </CustomButton>
-                  <CustomButton
-                    onClick={() => previousStep()}
-                    appearance="secondary"
-                  >
-                    Change Image
-                  </CustomButton>
-                  {fileDetails?.base64 && <CustomButton
-                    onClick={handleRemove}
-                    type="button"
-                    loading={processingRemove}
-                  >
-                    Remove Image
-                  </CustomButton>}
-                </FlexRow>
-            </form>
-          </>
-        )}
+      >
+        <CustomText as="h4">Edit Image</CustomText>
+        <CustomButton
+          onClick={onClose}
+          color="error"
+          icon={<Dismiss24Filled />}
+        />
+      </JustifyBetween>
+      {processing ? (
+        <div style={{ width: 200 }}>
+          <CardSpinner />
+        </div>
+      ) : (
+        <>
+          <AvatarEditor
+            ref={imageRef}
+            image={processedFileDetials?.base64 || DefaultAvatar}
+            width={150}
+            height={150}
+            border={30}
+            borderRadius={100}
+            color={[57, 57, 57, 0.388]} // RGBA
+            disableDrop
+            {...formik.values}
+          />
+          <CustomText style={{ marginTop: 1, marginBottom: 1 }} as="h5">
+            Options
+          </CustomText>
+          <Divider />
+          <form onSubmit={formik.handleSubmit}>
+            <RecursiveContainer config={settingsFields} formik={formik} />
+            <FlexRow style={{ flexWrap: "wrap" }}>
+              <CustomButton
+                appearance="subtle"
+                onClick={handleSubmit}
+                loading={processingEdit}
+              >
+                Done
+              </CustomButton>
+              <CustomButton
+                onClick={() => previousStep()}
+                appearance="secondary"
+              >
+                Change Image
+              </CustomButton>
+              {fileDetails?.base64 && (
+                <CustomButton
+                  onClick={handleRemove}
+                  type="button"
+                  loading={processingRemove}
+                >
+                  Remove Image
+                </CustomButton>
+              )}
+            </FlexRow>
+          </form>
+        </>
+      )}
     </StepContentWrapper>
   );
 };

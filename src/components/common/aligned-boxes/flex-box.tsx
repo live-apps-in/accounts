@@ -1,14 +1,14 @@
-import styled from "styled-components";
+import { styled } from "src/utils";
 
 const StyledFlexBoxWrapper = styled("div")((props) => ({
-	display: "flex",
-	...props.style,
+  display: "flex",
+  ...props.style,
 }));
 
 export const FlexBox: React.FC<
   React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 > = (props) => {
-	return (
-		<StyledFlexBoxWrapper {...props}>{props.children}</StyledFlexBoxWrapper>
-	);
+  return (
+    <StyledFlexBoxWrapper {...props}>{props.children}</StyledFlexBoxWrapper>
+  );
 };

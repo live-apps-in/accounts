@@ -1,5 +1,5 @@
 import { XYCenter } from "../common";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { AppLogoMiniImage } from "src/assets";
 import { Spinner } from "@fluentui/react-components";
 

@@ -1,5 +1,5 @@
 import StepWizard from "react-step-wizard";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { FileUpload } from "./file-upload";
 import { EditImage } from "./edit-image";
 import { useEffect, useState } from "react";
@@ -18,8 +18,7 @@ const StepWrapper = styled(StepWizard)(`
     display: grid;
     place-items: center;
   }
-`
-);
+`);
 
 export const ImageEditorPopup = (props) => {
   const { onEditEnd, onRemove, onClose, value } = props;

@@ -1,12 +1,12 @@
 import { navigationLinks } from "src/routes";
 import { Header } from "./header";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { CustomButton, MediaQueryBox } from "src/components";
 import { layoutSettings } from "./layout-settings";
 import { useSelector } from "src/redux";
 import { useAuth } from "src/hooks";
 import { useState } from "react";
-import { authSetup } from "src/data";
+import { authConfig } from "src/config";
 import { isActiveRoute } from "src/utils";
 import { useLocation } from "react-router-dom";
 import {
@@ -44,12 +44,12 @@ export const AuthLayout: React.FC<{ children?: React.ReactNode }> = ({
   const authenticationButtonProps = {
     loading,
     onClick: isAuthenticated && handleLogout,
-    href: !isAuthenticated ? authSetup.signupPage : undefined,
+    href: !isAuthenticated ? authConfig.signupPage : undefined,
   };
 
   const actions =
     // display only if its not the signup page
-    !isActiveRoute({ path: pathname, route: authSetup.signupPage }) ? (
+    !isActiveRoute({ path: pathname, route: authConfig.signupPage }) ? (
       <>
         <MediaQueryBox down={{ breakpoint: "md", style: { display: "none" } }}>
           <Tooltip

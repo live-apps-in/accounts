@@ -1,15 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { compressFile, downloadLink, getBase64 } from "src/utils";
-import {
-  CustomButton,
-  CustomFormFieldMessage
-} from "src/components";
-import {
-  ArrowDownload24Filled,
-  Delete24Regular,
-} from "@fluentui/react-icons";
-import styled from "styled-components";
+import { CustomButton, CustomFormFieldMessage } from "src/components";
+import { ArrowDownload24Filled, Delete24Regular } from "@fluentui/react-icons";
+import { styled } from "src/utils";
 
 const checkValidity = (name, supportedFormats = []) =>
   supportedFormats.some((el) => name.toLowerCase().endsWith(el));
@@ -34,9 +28,9 @@ export const FileInput = ({
   onChange = (_details) => {},
   value = null,
   supportedFormats = ["png", "jpg", "jpeg", "jfif"],
-  downloadName=null,
-  isDownloadable=false,
-  className=null,
+  downloadName = null,
+  isDownloadable = false,
+  className = null,
   style,
   convertToBase64 = true,
   name = "",
@@ -110,7 +104,7 @@ export const FileInput = ({
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    disabled: processing
+    disabled: processing,
   });
 
   useEffect(() => {
@@ -127,7 +121,7 @@ export const FileInput = ({
   const downloadChoosenFile = () => {
     downloadLink({
       link: file,
-      name: downloadName || fileDetails?.name || name
+      name: downloadName || fileDetails?.name || name,
     });
   };
 
@@ -143,7 +137,7 @@ export const FileInput = ({
         style={{
           outline: "none",
           cursor: processing ? "default" : "pointer",
-          ...style
+          ...style,
         }}
       >
         <input {...getInputProps()} />
@@ -180,7 +174,7 @@ export const FileInput = ({
           )}
         </>
       )}
-      <CustomFormFieldMessage type='error'>{error}</CustomFormFieldMessage>
+      <CustomFormFieldMessage type="error">{error}</CustomFormFieldMessage>
     </>
   );
 };

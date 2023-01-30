@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { authApi, socialAuth, userApi } from "src/api";
-import { authSetup, AUTH_PROVIDER } from "src/data";
+import { authConfig, AUTH_PROVIDER } from "src/config";
 import { useActions, useSelector } from "src/hooks";
 import {
   USE_AUTH_OPTIONS,
@@ -24,7 +24,7 @@ export const useAuth = <T>({
   const params = useParams();
 
   function getOAuthUrl(provider: AUTH_PROVIDER): string {
-    return authSetup.oauthPage.replace(":provider", provider);
+    return authConfig.oauthPage.replace(":provider", provider);
   }
 
   function fetchProfile({
@@ -69,7 +69,7 @@ export const useAuth = <T>({
         // };
         // authActions.initialize({ data, isAuthenticated: true });
 
-        const token = getCookie(authSetup.tokenAccessor);
+        const token = getCookie(authConfig.tokenAccessor);
         if (!token) throw new Error("Session expired");
         const data = await authApi.initialize();
         if (!data.token) throw new Error("Failed to authenticate");
@@ -81,7 +81,7 @@ export const useAuth = <T>({
         resolve(data);
       } catch (err) {
         if (updateRedux) authActions.logout();
-        deleteCookie(authSetup.tokenAccessor);
+        deleteCookie(authConfig.tokenAccessor);
         reject(err);
       }
     });
@@ -106,7 +106,7 @@ export const useAuth = <T>({
         const data = await authApi.login(loginData);
         if (!data.token) throw new Error("Failed to authenticate");
         if (updateRedux) authActions.login(data);
-        setCookie(authSetup.tokenAccessor, data.token);
+        setCookie(authConfig.tokenAccessor, data.token);
         // once the login is successful, fetch the profile right away
         await fetchProfile();
         resolve(data);
@@ -122,13 +122,13 @@ export const useAuth = <T>({
     return new Promise(async (resolve, reject) => {
       try {
         await authApi.logout();
-        deleteCookie(authSetup.tokenAccessor);
+        deleteCookie(authConfig.tokenAccessor);
         window.location.reload();
         if (updateRedux) authActions.logout();
         resolve();
       } catch (err) {
         if (updateRedux) authActions.logout();
-        deleteCookie(authSetup.tokenAccessor);
+        deleteCookie(authConfig.tokenAccessor);
         window.location.reload();
         reject(err);
       }
@@ -148,7 +148,7 @@ export const useAuth = <T>({
         // normal authentication with our api
         const data = await handleOAuthLogin(socialAuthData);
         if (updateRedux) authActions.login(data);
-        setCookie(authSetup.tokenAccessor, data.token);
+        setCookie(authConfig.tokenAccessor, data.token);
         if (updateRedux) authActions.login(data);
         // once the authentication is successful, fetch the profile right away
         await fetchProfile();

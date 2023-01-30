@@ -1,5 +1,5 @@
 import { BREAKPOINT, mediaQuery, STYLES } from "src/theme";
-import styled from "styled-components";
+import { styled } from "src/utils";
 
 export interface MEDIA_QUERY_BOX_PROPS
   extends React.DetailedHTMLProps<

@@ -1,11 +1,11 @@
 import { navigationLinks } from "src/routes";
 import { Header } from "./header";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { CustomButton, CustomDropdown, FlexRow } from "src/components";
 import { layoutSettings } from "./layout-settings";
 import { useAuth } from "src/hooks";
 import { useEffect, useState } from "react";
-import { authSetup } from "src/data";
+import { authConfig } from "src/config";
 import { getValidRouteName, isActiveRoute, removeSlashAtLast } from "src/utils";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -58,7 +58,7 @@ export const AdminLayout: React.FC<{ children?: React.ReactNode }> = ({
       />
       {
         // display only if its not the signup page
-        !isActiveRoute({ path: pathname, route: authSetup.signupPage }) && (
+        !isActiveRoute({ path: pathname, route: authConfig.signupPage }) && (
           <CustomButton loading={loading} onClick={handleLogout}>
             Logout
           </CustomButton>

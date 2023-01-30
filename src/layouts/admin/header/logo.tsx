@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { projectSetup } from "src/data";
+import { styled } from "src/utils";
+import { projectConfig } from "src/config";
 import { AppLogoFullImage } from "src/assets";
 import { mediaQuery } from "src/theme";
 import { Link } from "react-router-dom";
@@ -20,7 +20,7 @@ const StyledLogoWrapper = styled(Link)`
 export const Logo = () => {
   return (
     <StyledLogoWrapper to="/">
-      <img src={AppLogoFullImage} alt={projectSetup.title} />
+      <img src={AppLogoFullImage} alt={projectConfig.title} />
     </StyledLogoWrapper>
   );
 };

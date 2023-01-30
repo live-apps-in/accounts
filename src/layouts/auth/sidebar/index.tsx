@@ -6,7 +6,7 @@ import { useUniqueKey } from "src/hooks";
 import { NAVIGATION_LINKS } from "src/routes";
 import { customizedTheme as theme, mediaQuery } from "src/theme";
 import { getValidRouteName, removeSlashAtLast } from "src/utils";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { Logo } from "../header/logo";
 
 interface SIDEBAR_PROPS {
@@ -83,7 +83,7 @@ export const Sidebar: React.FC<SIDEBAR_PROPS> = ({
 
   useEffect(() => {
     setUpdatedPathname(pathname);
-  }, [pathname]); 
+  }, [pathname]);
 
   const handleNavItemClick = () => {
     event.stopPropagation();
@@ -105,27 +105,31 @@ export const Sidebar: React.FC<SIDEBAR_PROPS> = ({
             {navigationLinks.map((el, index) => (
               <div key={keys[index]} onClick={handleNavItemClick}>
                 <StyledTab value={el.path}>
-                  {
-                    el.children ? 
-                      <StyledCustomDropdown
-                        appearance="transparent"
-                        placeholder={el.name}
-                        style={{border: 'none', }}
-                        isNav
-                        selectedOptions={[removeSlashAtLast(updatedPathname)]}
-                        options={el.children.map((el) => ({
-                          value: el.path,
-                          label: el.name,
-                        }))}
-                        onChange={({ target: { value } }) => {
-                          handleClose();
-                          navigate(getValidRouteName(value));
-                        }}
-                      />
-                      : <CustomText href={el.path} as="h5" style={{ fontWeight: "bold" }}>
-                          {el.name}
-                        </CustomText>
-                  }
+                  {el.children ? (
+                    <StyledCustomDropdown
+                      appearance="transparent"
+                      placeholder={el.name}
+                      style={{ border: "none" }}
+                      isNav
+                      selectedOptions={[removeSlashAtLast(updatedPathname)]}
+                      options={el.children.map((el) => ({
+                        value: el.path,
+                        label: el.name,
+                      }))}
+                      onChange={({ target: { value } }) => {
+                        handleClose();
+                        navigate(getValidRouteName(value));
+                      }}
+                    />
+                  ) : (
+                    <CustomText
+                      href={el.path}
+                      as="h5"
+                      style={{ fontWeight: "bold" }}
+                    >
+                      {el.name}
+                    </CustomText>
+                  )}
                 </StyledTab>
               </div>
             ))}

@@ -7,7 +7,7 @@ import {
 } from "@fluentui/react-components/unstable";
 import { EventEmitter } from "src/utils";
 import { ConfirmationModal, CONFIRMATION_MODAL_PROPS } from "src/components";
-import styled from "styled-components";
+import { styled } from "src/utils";
 
 export interface CUSTOM_MODAL_COMPONENT_PROPS {
   [key: string]: any;

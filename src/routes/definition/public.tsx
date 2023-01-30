@@ -1,37 +1,50 @@
-import { SubRoutePublic } from "src/content/public";
-import { Public } from "src/guard";
-import { AuthLayout } from "src/layouts";
 import { ROUTES_DEFINITION } from "src/routes";
 import { Helmet } from "react-helmet";
+import { PublicLayout } from "src/layouts";
+import {
+  LoginPortalContent,
+  OTPPortal,
+  SignupPortalContent,
+} from "src/content/public";
+import { authConfig } from "src/config";
 
 export const publicRoutes: ROUTES_DEFINITION = [
   {
-    path: "/public_page",
+    path: authConfig.liveAppsLoginPage,
     element: (
       <>
         <Helmet>
-          <title>Public Page</title>
+          <title>Liveapps Login Page</title>
         </Helmet>
-        <Public>
-          <AuthLayout>
-            <SubRoutePublic />
-          </AuthLayout>
-        </Public>
+        <PublicLayout>
+          <LoginPortalContent />
+        </PublicLayout>
       </>
     ),
   },
   {
-    path: "/public_page/sub_route",
+    path: authConfig.liveAppsSignupPage,
     element: (
       <>
         <Helmet>
-          <title>Sub Route - Public</title>
+          <title>Liveapps Signup Page</title>
         </Helmet>
-        <Public>
-          <AuthLayout>
-            <SubRoutePublic />
-          </AuthLayout>
-        </Public>
+        <PublicLayout>
+          <SignupPortalContent />
+        </PublicLayout>
+      </>
+    ),
+  },
+  {
+    path: authConfig.liveAppsTwoFactorAuthenticationPage,
+    element: (
+      <>
+        <Helmet>
+          <title>Liveapps - 2FA</title>
+        </Helmet>
+        <PublicLayout>
+          <OTPPortal />
+        </PublicLayout>
       </>
     ),
   },

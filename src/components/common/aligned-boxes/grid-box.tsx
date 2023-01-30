@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "src/utils";
 
 const StyledGridBoxWrapper = styled("div")((props) => ({
   display: "grid",

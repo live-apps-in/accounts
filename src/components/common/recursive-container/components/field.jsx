@@ -38,7 +38,7 @@ import DatePicker from "react-datepicker";
 import { InputContainer } from "src/components";
 import { Eye24Regular, EyeOff24Filled } from "@fluentui/react-icons";
 import { customizedTheme as theme } from "src/theme";
-import styled from "styled-components";
+import { styled } from "src/utils";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -266,10 +266,10 @@ export const Field = (props) => {
       );
     case "file":
       return (
-        <InputContainer 
-          {...rest.containerProps} 
-          label={rest.label} 
-          required={isRequired} 
+        <InputContainer
+          {...rest.containerProps}
+          label={rest.label}
+          required={isRequired}
           error={error && touched ? error || rest.error : rest.error}
         >
           <FileInput
@@ -478,10 +478,14 @@ export const Field = (props) => {
     //   );
     case "slider":
       return (
-        <InputContainer 
+        <InputContainer
           {...rest.containerProps}
-          style={{ width: "90%", padding: "0 11px", ...rest.containerProps?.style }}
-          label={rest.label} 
+          style={{
+            width: "90%",
+            padding: "0 11px",
+            ...rest.containerProps?.style,
+          }}
+          label={rest.label}
           required={isRequired}
           error={error && touched ? error || rest.error : rest.error}
         >
@@ -510,7 +514,15 @@ export const Field = (props) => {
     // //   ) : null;
     case "component":
       return (
-        <InputContainer label={rest.label} required={isRequired} error={rest.showError && error && touched ? error || rest.error : rest.error}>
+        <InputContainer
+          label={rest.label}
+          required={isRequired}
+          error={
+            rest.showError && error && touched
+              ? error || rest.error
+              : rest.error
+          }
+        >
           {rest.component}
         </InputContainer>
       );

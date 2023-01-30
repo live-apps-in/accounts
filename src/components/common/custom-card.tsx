@@ -4,7 +4,7 @@ import {
   CardHeaderProps,
   CardProps,
 } from "@fluentui/react-components/unstable";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { customizedTheme as theme } from "src/theme";
 import { CardSpinner } from "../app-specific";
 

@@ -4,9 +4,9 @@ import { filterNumbers } from "src/utils";
 
 import "react-phone-number-input/style.css";
 import { Input } from "@fluentui/react-components";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { customizedTheme as theme } from "src/theme";
-import { projectSetup } from "src/data";
+import { projectConfig } from "src/config";
 
 const StyledInput = styled(Input)(() => ({
   ...theme.components.Input,
@@ -18,9 +18,12 @@ export const PhoneInputComponent = (
   props
   // : PHONE_INPUT_PROPS
 ) => {
-  const { onChange, value, 
+  const {
+    onChange,
+    value,
     // readOnly,
-  ...rest } = props;
+    ...rest
+  } = props;
   let alteredValue = `${value || ""}`;
   if (alteredValue) {
     alteredValue = alteredValue.toString();
@@ -50,9 +53,9 @@ export const PhoneInputComponent = (
       countryCallingCodeEditable={false}
       disabled={rest.disabled || inputProps.disabled}
       // ref={ref}
-      country={projectSetup.defaultPhonenumberCountry}
+      country={projectConfig.defaultPhonenumberCountry}
       // countrySelectComponent={readOnly ? <></> : undefined}
-      defaultCountry={projectSetup.defaultPhonenumberCountry}
+      defaultCountry={projectConfig.defaultPhonenumberCountry}
       {...rest}
       inputComponent={StyledInput}
       value={alteredValue}

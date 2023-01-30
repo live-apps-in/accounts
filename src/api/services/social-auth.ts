@@ -1,11 +1,11 @@
 import { PublicClientApplication } from "@azure/msal-browser";
 import {
-  authSetup,
+  authConfig,
   AUTH_PROVIDER,
   GOOGLE_CONFIG,
   MICROSOFT_CONFIG,
   TOKEN_ACCESSOR_FOR_PROVIDER,
-} from "src/data";
+} from "src/config";
 import { O_AUTH_DATA } from "src/model";
 import {
   convertMsalError,
@@ -16,7 +16,7 @@ import {
 import { uniqId } from "src/utils";
 
 function getRedirectUri(provider: AUTH_PROVIDER) {
-  return `${window.location.origin}${authSetup.oauthPage.replace(
+  return `${window.location.origin}${authConfig.oauthPage.replace(
     ":provider",
     provider
   )}`;

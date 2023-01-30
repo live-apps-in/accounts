@@ -7,7 +7,7 @@ import {
 import { Select } from "@fluentui/react-components/unstable";
 import { InputContainer } from "./input-container";
 import { useUniqueKey } from "src/hooks";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { customizedTheme as theme } from "src/theme";
 
 const StyledSelect = styled(Select)(() => ({
@@ -126,18 +126,20 @@ export const FluentSelect = ({
         value={selectedValue || ""}
         onChange={onChange}
       >
-        {readOnly ?
+        {readOnly ? (
           <option value={selectedValue}>{selectedLabel}</option>
-        : <>
-          <option selected={!selectedValue} value="">
-            {rest.placeholder || "Choose an option"}
-          </option>
-          {options.map((el, index) => (
-            <option key={keys[index]} value={el.value}>
-              {el.label}
+        ) : (
+          <>
+            <option selected={!selectedValue} value="">
+              {rest.placeholder || "Choose an option"}
             </option>
-          ))}
-        </>}
+            {options.map((el, index) => (
+              <option key={keys[index]} value={el.value}>
+                {el.label}
+              </option>
+            ))}
+          </>
+        )}
       </StyledSelect>
     </InputContainer>
   );

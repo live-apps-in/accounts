@@ -4,7 +4,7 @@ import {
   OAuthPageContent,
   SignupPageContent,
 } from "src/content/auth";
-import { authSetup } from "src/data";
+import { authConfig } from "src/config";
 import { Guest } from "src/guard";
 import { AuthLayout } from "src/layouts";
 import { ROUTES_DEFINITION } from "../router";
@@ -12,7 +12,7 @@ import { Helmet } from "react-helmet";
 
 export const authRoutes: ROUTES_DEFINITION = [
   {
-    path: authSetup.authPage,
+    path: authConfig.authPage,
     element: (
       <>
         <Helmet>
@@ -27,7 +27,7 @@ export const authRoutes: ROUTES_DEFINITION = [
     ),
   },
   {
-    path: authSetup.signupPage,
+    path: authConfig.signupPage,
     element: (
       <>
         <Helmet>
@@ -42,7 +42,7 @@ export const authRoutes: ROUTES_DEFINITION = [
     ),
   },
   {
-    path: authSetup.oauthPage,
+    path: authConfig.oauthPage,
     element: (
       <>
         <Helmet>

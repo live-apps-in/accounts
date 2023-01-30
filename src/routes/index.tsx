@@ -68,3 +68,4 @@ export const routes: ROUTE_DEFINITION[] = [
 export { navigationLinks };
 
 export * from "./router";
+export * from "./definition";

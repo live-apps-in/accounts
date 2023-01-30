@@ -1,6 +1,6 @@
 import { WarningFilled } from "@fluentui/react-icons";
 import { CustomButton, CUSTOM_BUTTON_PROPS } from "src/components";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { useState } from "react";
 import { CustomText } from "src/components";
 import { customizedTheme as theme } from "src/theme";

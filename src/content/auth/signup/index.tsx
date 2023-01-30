@@ -1,5 +1,5 @@
 import { SignupForm } from "./signup-form";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { mediaQuery } from "src/theme";
 import {
   CustomText,

@@ -1,6 +1,6 @@
 // import { customizedTheme as theme } from "src/theme";
 import { CustomText, CUSTOM_TEXT_PROPS } from "src/components";
-import styled from "styled-components";
+import { styled } from "src/utils";
 import { customizedTheme as theme } from "src/theme";
 
 interface FORM_FIELD_MESSAGE {

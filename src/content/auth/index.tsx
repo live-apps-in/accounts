@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { authSetup } from "src/data";
+import { authConfig } from "src/config";
 
 export const AuthPageContent = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate(authSetup.signupPage);
+    navigate(authConfig.signupPage);
   }, []);
 
   return null;

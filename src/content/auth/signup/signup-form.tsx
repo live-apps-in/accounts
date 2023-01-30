@@ -5,12 +5,12 @@ import {
   CustomText,
   MediaQueryBox,
 } from "src/components";
-import { authSetup } from "src/data";
+import { authConfig } from "src/config";
 import { useAuth, useUniqueKey } from "src/hooks";
 import { Logo } from "src/layouts/auth/header/logo";
 import { GoogleIcon, MicrosoftIcon } from "src/theme";
 import { capitalize, getSearchQuery, getSearchStringWithUrl } from "src/utils";
-import styled from "styled-components";
+import { styled } from "src/utils";
 
 const StyledCustomCardWrapper = styled(CustomCard)`
   display: flex;
@@ -38,7 +38,7 @@ export const SignupForm = () => {
     return getSearchStringWithUrl({
       url: getOAuthUrl(provider),
       query: {
-        authURL: authSetup.signupPage,
+        authURL: authConfig.signupPage,
         backToURL: searchQuery?.backToURL,
       },
     });

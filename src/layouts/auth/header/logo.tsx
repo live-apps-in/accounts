@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { projectSetup } from "src/data";
+import { styled } from "src/utils";
+import { projectConfig } from "src/config";
 import { AppLogoFullImage } from "src/assets";
 import { mediaQuery } from "src/theme";
 import { Link, LinkProps } from "react-router-dom";
@@ -24,7 +24,7 @@ interface LINK_PROPS extends Omit<LinkProps, "to"> {
 export const Logo: React.FC<LINK_PROPS> = (props) => {
   return (
     <StyledLogoWrapper to="/" {...props}>
-      <img src={AppLogoFullImage} alt={projectSetup.title} />
+      <img src={AppLogoFullImage} alt={projectConfig.title} />
     </StyledLogoWrapper>
   );
 };
