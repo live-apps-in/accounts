@@ -22,7 +22,7 @@ export const projectConfig = {
 };
 
 export const gatewayConfig = {
-  default: "https://api.accounts.jagalive.in",
+  default: process.env.REACT_APP_BASE_URL,
 };
 
 export const platformConfig = {
