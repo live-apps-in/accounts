@@ -3,6 +3,7 @@ import {
   accessValueByDotNotation,
   convertDropDownObject,
   ignoreEmptyObject,
+  capitalize,
 } from "src/utils";
 import { Select } from "@fluentui/react-components/unstable";
 import { InputContainer } from "./input-container";
@@ -10,8 +11,11 @@ import { useUniqueKey } from "src/hooks";
 import { styled } from "src/utils";
 import { customizedTheme as theme } from "src/theme";
 
-const StyledSelect = styled(Select)(() => ({
+const StyledSelect = styled(Select)((props) => ({
   ...theme.components.Select,
+  ...theme.components.Select[
+    `${capitalize(props.appearance || "outline")}Select`
+  ],
 }));
 
 export const FluentSelect = ({

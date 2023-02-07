@@ -17,6 +17,7 @@ import { FluentSelect } from "./fluent-select";
 import { FluentSelectMultiple } from "./fluent-select-multiple";
 import {
   accessValueByDotNotation,
+  capitalize,
   getValidDate,
   isRequiredField,
   uniqId,
@@ -42,12 +43,14 @@ import { styled } from "src/utils";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const StyledInput = styled(Input)(() => ({
+const StyledInput = styled(Input)((props) => ({
   ...theme.components.Input,
+  ...theme.components[`${capitalize(props.appearance || 'outline')}Input`]
 }));
 
 const StyledTextareaInput = styled(Textarea)(() => ({
   ...theme.components.TextareaInput,
+  ...theme.components[`${capitalize(props.appearance || 'outline')}TextareaInput`]
 }));
 
 // const StyledDatePicker = styled(DatePicker)`

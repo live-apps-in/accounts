@@ -117,8 +117,11 @@ export interface CUSTOM_THEME {
     link: STYLES;
     label: STYLES;
     Input?: STYLES;
+    OutlineInput?: STYLES;
     TextareaInput?: STYLES;
+    OutlineTextareaInput?: STYLES;
     Select?: STYLES;
+    OutlineSelect?: STYLES;
     TransparentButton?: STYLES;
     OutlineButton?: STYLES;
     PrimaryButton?: STYLES;

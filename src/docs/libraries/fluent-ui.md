@@ -1,6 +1,6 @@
 # Fluent UI
 
-- [Documentation](https://developer.microsoft.com/en-us/fluentui#/get-started/web)
+- [Documentation](https://react.fluentui.dev/)
 - `npx create-react-app my-app --template @fluentui/cra-template`
 
 # Theming

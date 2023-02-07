@@ -7,8 +7,8 @@ import {
 import { mediaQuery } from "../viewport";
 
 const themeColors = {
-  primary: "#de0a1e",
-  primaryHovered: "#a82330",
+  primary: "#c9e265",
+  primaryHovered: "#c9e265b4",
   secondary: "#353535",
   secondaryHovered: "#242222",
   success: "#3DAB54",
@@ -98,7 +98,7 @@ export const PureLightTheme: PartialTheme = {
 
 export const PureLightThemeCustomization: CUSTOM_THEME = {
   general: {
-    bodyBg: "#FFFFFF",
+    bodyBg: "transparent",
     // fontFamily: "'Montserrat', sans-serif",
   },
   colors,
@@ -173,9 +173,12 @@ export const PureLightThemeCustomization: CUSTOM_THEME = {
       textAlign: "left",
       fontWeight: "normal",
       color: themeColors.link,
+      background: "none",
+      width: "fit-content",
       ":hover": {
+        color: `${themeColors.link} !important`,
         textDecoration: "underline",
-        background: "none",
+        backgroundColor: "transparent !important",
       },
     },
     GoogleButton: {
@@ -318,8 +321,6 @@ export const PureLightThemeCustomization: CUSTOM_THEME = {
     // Form components
     Input: {
       width: "100%",
-      border: "1px solid #CED4DA",
-      borderRadius: 4,
       transition: "border-color 0.1s ease",
       ":focus-within, :hover": {
         borderColor: "#939596 !important",
@@ -331,6 +332,11 @@ export const PureLightThemeCustomization: CUSTOM_THEME = {
       "> input::placeholder": {
         color: "#969696",
       },
+    },
+    OutlineInput: {
+      border: "none",
+      borderRadius: 0,
+      ":focus-within, :hover": {},
     },
     TextareaInput: {
       width: "100%",
@@ -347,6 +353,11 @@ export const PureLightThemeCustomization: CUSTOM_THEME = {
       "> textarea::placeholder": {
         color: "#969696",
       },
+    },
+    OutlineTextAreaInput: {
+      border: "none",
+      borderRadius: 0,
+      ":focus-within, :hover": {},
     },
     Select: {
       width: "100%",
@@ -374,6 +385,11 @@ export const PureLightThemeCustomization: CUSTOM_THEME = {
       "> select > option:first-child": {
         color: "#969696",
       },
+    },
+    OutlineSelect: {
+      border: "none",
+      borderRadius: 0,
+      ":focus-within, :hover": {},
     },
 
     // Other

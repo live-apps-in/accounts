@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 
 const StyledDesktopHeaderWrapper = styled(JustifyBetween)`
-  padding: 20px;
+  padding: 20px 10vw;
   align-items: center;
   ${mediaQuery.down(1200)} {
     display: none;
@@ -24,7 +24,7 @@ const StyledDesktopHeaderWrapper = styled(JustifyBetween)`
 `;
 
 const StyledTabletHeaderWrapper = styled(JustifyBetween)`
-  padding: 20px;
+  padding: 20px 5vw;
   align-items: center;
   ${mediaQuery.down("md")} {
     display: none;

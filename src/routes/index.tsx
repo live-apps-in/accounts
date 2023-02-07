@@ -1,11 +1,12 @@
 import { HomePageContent } from "src/content";
 import { ROUTE_DEFINITION } from "src/routes";
-import { Public } from "src/guard";
+import { Authenticated } from "src/guard";
 import { AuthLayout } from "src/layouts";
 import { PageNotFound } from "src/components";
 import { routeDefinition } from "./definition";
 import { navigationLinks } from "./navigation-links";
 import { Helmet } from "react-helmet";
+import { projectConfig } from "src/config";
 
 export const routes: ROUTE_DEFINITION[] = [
   {
@@ -13,13 +14,13 @@ export const routes: ROUTE_DEFINITION[] = [
     element: (
       <>
         <Helmet>
-          <title>App Title</title>
+          <title>{projectConfig.title}</title>
         </Helmet>
-        <Public>
+        <Authenticated>
           <AuthLayout>
             <HomePageContent />
           </AuthLayout>
-        </Public>
+        </Authenticated>
       </>
     ),
   },

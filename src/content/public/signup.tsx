@@ -7,11 +7,26 @@ import {
   CustomCard,
   CustomText,
   RecursiveContainer,
+  XYCenter,
 } from "src/components";
 import { authConfig } from "src/config";
 import { useAccountsAuth } from "src/hooks";
+import { layoutSettings } from "src/layouts/public/layout-settings";
 import { liveAppsAccountsPortalSignupSchema } from "src/schema";
 import { appendSearchString, getSearchQuery, handleError } from "src/utils";
+import styled from "styled-components";
+
+const StyledSignupPageWrapper = styled(XYCenter)`
+  width: 100%;
+  height: calc(100vh - ${layoutSettings.header.height});
+`;
+
+const StyledCustomCard = styled(CustomCard)`
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  margin-top: -${layoutSettings.header.height};
+`;
 
 export const SignupPortalContent: React.FC = () => {
   const [submitting, setSubmitting] = useState(false);
@@ -55,39 +70,55 @@ export const SignupPortalContent: React.FC = () => {
   const config: CONFIG_TYPE = [
     {
       name: "name",
-      label: "Name",
+      // label: "Name",
+      placeholder: "Name",
+      appearance: "underline",
+      style: { margin: "15px auto" },
     },
     {
       name: "email",
       type: "email",
-      label: "Live Apps Email",
+      // label: "Live Apps Email",
+      placeholder: "Live Apps Email",
+      appearance: "underline",
+      style: { margin: "15px auto" },
     },
   ];
 
   return (
-    <CustomCard>
-      {error ? (
-        <CustomText as="h3">{error}</CustomText>
-      ) : (
-        <form onSubmit={formik.handleSubmit}>
-          <RecursiveContainer
-            config={config}
-            validationSchema={liveAppsAccountsPortalSignupSchema}
-            formik={formik}
-          />
-          <CustomButton loading={submitting} type="submit">
-            Signup with Live Apps
-          </CustomButton>
-          <CustomButton
-            href={`${authConfig.liveAppsLoginPage}?${appendSearchString([
-              search,
-              { signup: false },
-            ])}`}
-          >
-            Login with Live apps
-          </CustomButton>
-        </form>
-      )}
-    </CustomCard>
+    <StyledSignupPageWrapper>
+      <StyledCustomCard
+        header={
+          <CustomText align="center" as="h2">
+            Signup
+          </CustomText>
+        }
+        style={{ borderRadius: 20 }}
+      >
+        {error ? (
+          <CustomText as="h3">{error}</CustomText>
+        ) : (
+          <form onSubmit={formik.handleSubmit}>
+            <RecursiveContainer
+              config={config}
+              validationSchema={liveAppsAccountsPortalSignupSchema}
+              formik={formik}
+            />
+            <CustomButton loading={submitting} type="submit">
+              Signup with Live Apps
+            </CustomButton>
+          </form>
+        )}
+        <CustomButton
+          buttonType="link"
+          href={`${authConfig.liveAppsLoginPage}?${appendSearchString([
+            search,
+            { signup: false },
+          ])}`}
+        >
+          Already an user
+        </CustomButton>
+      </StyledCustomCard>
+    </StyledSignupPageWrapper>
   );
 };

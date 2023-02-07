@@ -6,13 +6,13 @@ import { Link, LinkProps } from "react-router-dom";
 
 const StyledLogoWrapper = styled(Link)`
   img {
-    width: 180px;
+    width: 50px;
     height: 50px;
   }
   ${mediaQuery.up("sm")} {
     img {
-      width: 225px;
-      height: 65px;
+      width: 80px;
+      height: 80px;
     }
   }
 `;
