@@ -1,7 +1,7 @@
 import { Actions } from "./actions";
 import { Logo } from "./logo";
 import { styled } from "src/utils";
-import { CustomText, JustifyBetween } from "src/components";
+import { CustomText, FlexRow, JustifyBetween } from "src/components";
 import { customizedTheme as theme, HamburgerIcon, mediaQuery } from "src/theme";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
@@ -28,11 +28,16 @@ const StyledTabletHeaderWrapper = styled(JustifyBetween)`
 const StyledMobileHeaderWrapper = styled(JustifyBetween)`
   width: 100%;
   background-color: ${theme.colors.themeColors.primary};
-  padding: 19px;
+  padding: 10px 19px;
   align-items: center;
   ${mediaQuery.up("md")} {
     display: none;
   }
+`;
+
+const TitleContainer = styled(FlexRow)`
+  gap: 10px;
+  align-items: center;
 `;
 
 export interface HEADER_PROPS {
@@ -51,12 +56,18 @@ export const Header = ({ actions = null }) => {
     <>
       <Helmet onChangeClientState={(newState) => setTitle(newState.title)} />
       <StyledMobileHeaderWrapper>
-        <CustomText
-          as="h4"
-          style={{ fontWeight: "bold", color: theme.colors.themeColors.white }}
-        >
-          {title}
-        </CustomText>
+        <TitleContainer>
+          <Logo />
+          <CustomText
+            as="h4"
+            style={{
+              fontWeight: 300,
+              color: theme.colors.themeColors.white,
+            }}
+          >
+            {title}
+          </CustomText>
+        </TitleContainer>
         <Actions>{actions}</Actions>
       </StyledMobileHeaderWrapper>
       <StyledTabletHeaderWrapper>

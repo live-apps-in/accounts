@@ -1,76 +1,157 @@
+// https://stackoverflow.com/a/48705453/13686747 -- reference
+// TODO: Convert to Variant font type -- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide
+
 @font-face {
-    font-family: 'Gilroy';
-    src: local('Gilroy-Bold'), url("../font/Gilroy/Gilroy-Bold.otf") format('truetype');
-    font-weight: bold;
+  font-family: "Poppins";
+  src: local("Poppins 100"),
+    url("../font/Poppins/Poppins-Thin.ttf") format("truetype");
+  font-weight: 100;
 }
 
 @font-face {
-    font-family: 'Gilroy';
-    src: local('Gilroy-BoldItalic'), url("../font/Gilroy/Gilroy-BoldItalic.otf") format('truetype');
-    font-weight: bold;
-    font-style: italic;
+  font-family: "Poppins";
+  src: local("Poppins 100"),
+    url("../font/Poppins/Poppins-Thin.ttf") format("truetype");
+  font-weight: lighter;
 }
 
 @font-face {
-    font-family: 'Gilroy';
-    src: local('Gilroy-Light'), url("../font/Gilroy/Gilroy-Light.otf") format('truetype');
-    font-weight: 500;
+  font-family: "Poppins";
+  src: local("Poppins 100"),
+    url("../font/Poppins/Poppins-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Gilroy';
-    src: local('Gilroy-LightItalic'), url("../font/Gilroy/Gilroy-LightItalic.otf") format('truetype');
-    font-weight: 300;
-    font-style: italic;
+  font-family: "Poppins";
+  src: local("Poppins 200"),
+    url("../font/Poppins/Poppins-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
 }
 
 @font-face {
-    font-family: 'Gilroy';
-    src: local('Gilroy-Medium'), url("../font/Gilroy/Gilroy-Medium.otf") format('truetype');
-    font-weight: 500;
+  font-family: "Poppins";
+  src: local("Poppins 200"),
+    url("../font/Poppins/Poppins-ExtraLightItalic.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Gilroy';
-    src: local('Gilroy-MediumItalic'), url("../font/Gilroy/Gilroy-MediumItalic.otf") format('truetype');
-    font-weight: 500;
-    font-style: italic;
+  font-family: "Poppins";
+  src: local("Poppins 300"),
+    url("../font/Poppins/Poppins-Light.ttf") format("truetype");
+  font-weight: 300;
 }
 
 @font-face {
-    font-family: 'Gilroy';
-    src: local('Gilroy-Semibold'), url("../font/Gilroy/Gilroy-Semibold.otf") format('truetype');
-    font-weight: 700;
+  font-family: "Poppins";
+  src: local("Poppins 300"),
+    url("../font/Poppins/Poppins-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Gilroy';
-    src: local('Gilroy-SemiboldItalic'), url("../font/Gilroy/Gilroy-SemiboldItalic.otf") format('truetype');
-    font-weight: 700;
-    font-style: italic;
+  font-family: "Poppins";
+  src: local("Poppins 400"),
+    url("../font/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+// @font-face {
+//     font-family: 'Poppins';
+//     src: local('Poppins 400'), url('../font/Poppins/Poppins-RegularItalic.ttf') format('truetype');
+//     font-weight: 400;
+//     font-style: italic;
+// }
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins 500"),
+    url("../font/Poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500;
 }
 
 @font-face {
-    font-family: 'Gilroy';
-    src: local('Gilroy-Regular'), url("../font/Gilroy/Gilroy-Regular.otf") format('truetype');
+  font-family: "Poppins";
+  src: local("Poppins 500"),
+    url("../font/Poppins/Poppins-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Gilroy';
-    src: local('Gilroy-RegularItalic'), url("../font/Gilroy/Gilroy-RegularItalic.otf") format('truetype');
-    font-weight: normal;
-    font-style: italic;
+  font-family: "Poppins";
+  src: local("Poppins 600"),
+    url("../font/Poppins/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: 600;
 }
 
 @font-face {
-    font-family: 'Gilroy';
-    src: local('Gilroy-Thin'), url("../font/Gilroy/Gilroy-Thin.otf") format('truetype');
-    font-weight: lighter;
+  font-family: "Poppins";
+  src: local("Poppins 600"),
+    url("../font/Poppins/Poppins-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Gilroy';
-    src: local('Gilroy-ThinItalic'), url("../font/Gilroy/Gilroy-ThinItalic.otf") format('truetype');
-    font-weight: lighter;
-    font-style: italic;
+  font-family: "Poppins";
+  src: local("Poppins 700"),
+    url("../font/Poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins 700"),
+    url("../font/Poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins 700"),
+    url("../font/Poppins/Poppins-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins 800"),
+    url("../font/Poppins/Poppins-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins 800"),
+    url("../font/Poppins/Poppins-ExtraBold.ttf") format("truetype");
+  font-weight: bolder;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins 800"),
+    url("../font/Poppins/Poppins-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins 900"),
+    url("../font/Poppins/Poppins-Black.ttf") format("truetype");
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins 900"),
+    url("../font/Poppins/Poppins-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
 }

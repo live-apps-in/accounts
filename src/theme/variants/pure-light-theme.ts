@@ -1,6 +1,6 @@
 import { PartialTheme, teamsLightTheme } from "@fluentui/react-components";
 import {
-  CUSTOM_THEME,
+  CUSTOMIZED_THEME,
   CUSTOMIZED_THEME_COLORS,
   CUSTOM_BUTTON_STYLE_BASED_ON_SIZE,
 } from "src/theme";
@@ -67,9 +67,14 @@ const colors: CUSTOMIZED_THEME_COLORS = {
   themeColors,
 };
 
+const globalStyles = {
+  fontFamily: "'Poppins', 'sans-serif' !important;",
+};
+
 const commonButtonStyles: any = {
   borderRadius: "4px",
-  fontFamily: "Gilroy",
+  fontFamily: globalStyles.fontFamily,
+  fontWeight: 300,
   width: "fit-content",
 };
 
@@ -94,9 +99,10 @@ export const customButtonStyleBasedOnSize: CUSTOM_BUTTON_STYLE_BASED_ON_SIZE = {
 
 export const PureLightTheme: PartialTheme = {
   ...teamsLightTheme,
+  colorNeutralBackground1: "transparent",
 };
 
-export const PureLightThemeCustomization: CUSTOM_THEME = {
+export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
   general: {
     bodyBg: "transparent",
     // fontFamily: "'Montserrat', sans-serif",
@@ -232,7 +238,7 @@ export const PureLightThemeCustomization: CUSTOM_THEME = {
 
     // typography
     h1: {
-      fontFamily: "Gilroy",
+      fontFamily: globalStyles.fontFamily,
       fontWeight: 700,
       fontSize: "35px",
       margin: "4px 2px",
@@ -242,7 +248,7 @@ export const PureLightThemeCustomization: CUSTOM_THEME = {
       },
     },
     h2: {
-      fontFamily: "Gilroy",
+      fontFamily: globalStyles.fontFamily,
       fontWeight: 700,
       fontSize: "30px",
       margin: "4px 2px",
@@ -252,7 +258,7 @@ export const PureLightThemeCustomization: CUSTOM_THEME = {
       },
     },
     h3: {
-      fontFamily: "Gilroy",
+      fontFamily: globalStyles.fontFamily,
       fontWeight: 500,
       fontSize: "25px",
       lineHeight: 1,
@@ -263,7 +269,7 @@ export const PureLightThemeCustomization: CUSTOM_THEME = {
       },
     },
     h4: {
-      fontFamily: "Gilroy",
+      fontFamily: globalStyles.fontFamily,
       fontWeight: 500,
       fontSize: "20px",
       margin: "3px 2px",
@@ -272,7 +278,7 @@ export const PureLightThemeCustomization: CUSTOM_THEME = {
       },
     },
     h5: {
-      fontFamily: "Gilroy",
+      fontFamily: globalStyles.fontFamily,
       fontWeight: 500,
       fontSize: "17px",
       margin: "3px 2px",
@@ -281,7 +287,7 @@ export const PureLightThemeCustomization: CUSTOM_THEME = {
       },
     },
     h6: {
-      fontFamily: "Gilroy",
+      fontFamily: globalStyles.fontFamily,
       fontSize: "15px",
       fontWeight: 500,
       margin: "3px 2px",
@@ -290,7 +296,7 @@ export const PureLightThemeCustomization: CUSTOM_THEME = {
       },
     },
     p: {
-      fontFamily: "Gilroy",
+      fontFamily: globalStyles.fontFamily,
       fontWeight: 500,
       fontSize: "14px",
       margin: "3px 2px",
@@ -299,18 +305,18 @@ export const PureLightThemeCustomization: CUSTOM_THEME = {
       },
     },
     pre: {
-      fontFamily: "Gilroy",
+      fontFamily: globalStyles.fontFamily,
       fontWeight: 300,
       fontSize: "15px",
       color: colors.alpha.black[70],
     },
     span: {
-      fontFamily: "Gilroy",
+      fontFamily: globalStyles.fontFamily,
       fontSize: "14px",
       color: colors.alpha.black[70],
     },
     label: {
-      fontFamily: "Gilroy",
+      fontFamily: globalStyles.fontFamily,
       fontWeight: 500,
       margin: "5px 0",
     },
@@ -334,14 +340,12 @@ export const PureLightThemeCustomization: CUSTOM_THEME = {
       },
     },
     OutlineInput: {
-      border: "none",
-      borderRadius: 0,
+      border: "1px solid #CED4DA",
+      borderRadius: 4,
       ":focus-within, :hover": {},
     },
     TextareaInput: {
       width: "100%",
-      border: "1px solid #CED4DA",
-      borderRadius: 4,
       transition: "border-color 0.1s ease",
       ":focus-within, :hover": {
         borderColor: "#939596 !important",
@@ -355,8 +359,8 @@ export const PureLightThemeCustomization: CUSTOM_THEME = {
       },
     },
     OutlineTextAreaInput: {
-      border: "none",
-      borderRadius: 0,
+      border: "1px solid #CED4DA",
+      borderRadius: 4,
       ":focus-within, :hover": {},
     },
     Select: {

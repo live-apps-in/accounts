@@ -45,12 +45,14 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const StyledInput = styled(Input)((props) => ({
   ...theme.components.Input,
-  ...theme.components[`${capitalize(props.appearance || 'outline')}Input`]
+  ...theme.components[`${capitalize(props.appearance || "outline")}Input`],
 }));
 
-const StyledTextareaInput = styled(Textarea)(() => ({
+const StyledTextareaInput = styled(Textarea)((props) => ({
   ...theme.components.TextareaInput,
-  ...theme.components[`${capitalize(props.appearance || 'outline')}TextareaInput`]
+  ...theme.components[
+    `${capitalize(props.appearance || "outline")}TextareaInput`
+  ],
 }));
 
 // const StyledDatePicker = styled(DatePicker)`

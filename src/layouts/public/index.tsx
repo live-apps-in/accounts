@@ -5,7 +5,7 @@ import { styled } from "src/utils";
 const MainContentWrapper = styled("div")``;
 
 const BackgroundDivision = styled("div")`
-  background: #33d4fb;
+  // background: #33d4fb;
   background: linear-gradient(14deg, #33d4fb, #fbccff 28%, #fff 63%);
   width: 100vw;
   height: 100vh;

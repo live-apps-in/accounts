@@ -6,8 +6,9 @@ import { Link, LinkProps } from "react-router-dom";
 
 const StyledLogoWrapper = styled(Link)`
   img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
   }
   ${mediaQuery.up("sm")} {
     img {

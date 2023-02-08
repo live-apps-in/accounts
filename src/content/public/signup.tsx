@@ -13,6 +13,7 @@ import { authConfig } from "src/config";
 import { useAccountsAuth } from "src/hooks";
 import { layoutSettings } from "src/layouts/public/layout-settings";
 import { liveAppsAccountsPortalSignupSchema } from "src/schema";
+import { customizedTheme as theme } from "src/theme";
 import { appendSearchString, getSearchQuery, handleError } from "src/utils";
 import styled from "styled-components";
 
@@ -22,10 +23,26 @@ const StyledSignupPageWrapper = styled(XYCenter)`
 `;
 
 const StyledCustomCard = styled(CustomCard)`
-  width: 100%;
+  width: 90%;
   max-width: 500px;
-  padding: 20px;
+  padding: 30px 50px;
+  border-radius: 20px;
+  background-color: ${theme.colors.themeColors.white};
   margin-top: -${layoutSettings.header.height};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  form > div {
+    width: 100%;
+  }
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const SignupPortalContent: React.FC = () => {
@@ -89,11 +106,10 @@ export const SignupPortalContent: React.FC = () => {
     <StyledSignupPageWrapper>
       <StyledCustomCard
         header={
-          <CustomText align="center" as="h2">
+          <CustomText align="center" as="h3">
             Signup
           </CustomText>
         }
-        style={{ borderRadius: 20 }}
       >
         {error ? (
           <CustomText as="h3">{error}</CustomText>
@@ -116,7 +132,7 @@ export const SignupPortalContent: React.FC = () => {
             { signup: false },
           ])}`}
         >
-          Already an user
+          Already an user ?
         </CustomButton>
       </StyledCustomCard>
     </StyledSignupPageWrapper>

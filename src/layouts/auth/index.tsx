@@ -16,6 +16,7 @@ import {
 import { Tooltip } from "@fluentui/react-components";
 
 const MainContentWrapper = styled("div")`
+  background: linear-gradient(14deg, #33d4fb, #fbccff 28%, #fff 63%);
   width: 100vw;
   max-width: 100vw;
   overflow: auto;
