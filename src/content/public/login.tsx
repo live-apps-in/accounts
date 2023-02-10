@@ -20,6 +20,7 @@ import {
   handleError,
   styled,
 } from "src/utils";
+import { LIVE_APPS_URL_QUERY_DATA } from "src/model";
 
 const StyledLoginPageWrapper = styled(XYCenter)`
   width: 100%;
@@ -52,7 +53,9 @@ const StyledCustomCard = styled(CustomCard)`
 export const LoginPortalContent: React.FC = () => {
   const [submitting, setSubmitting] = useState(false);
   const { search } = useLocation();
-  const searchQuery = getSearchQuery(search);
+  const searchQuery = getSearchQuery(
+    search
+  ) as unknown as LIVE_APPS_URL_QUERY_DATA;
   const navigate = useNavigate();
   const { login } = useAccountsAuth();
   const [error, setError] = useState(null);
@@ -127,7 +130,7 @@ export const LoginPortalContent: React.FC = () => {
             { signup: true },
           ])}`}
         >
-          Add New Account
+          Signup with a New Account
         </CustomButton>
       </StyledCustomCard>
     </StyledLoginPageWrapper>

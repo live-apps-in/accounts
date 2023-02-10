@@ -2,6 +2,8 @@
 
 Authentication service for apps under live apps
 
+### [Documentation for Accounts - Live Apps](https://exciting-bassoon-bbe.notion.site/Accounts-Live-Apps-bc87388482a847ce91e902e80ff10951)
+
 ## Technologies Used
 
 ### React JS, Fluent UI, Redux Toolkit, Social Authentication

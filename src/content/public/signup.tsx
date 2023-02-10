@@ -12,6 +12,7 @@ import {
 import { authConfig } from "src/config";
 import { useAccountsAuth } from "src/hooks";
 import { layoutSettings } from "src/layouts/public/layout-settings";
+import { LIVE_APPS_URL_QUERY_DATA } from "src/model";
 import { liveAppsAccountsPortalSignupSchema } from "src/schema";
 import { customizedTheme as theme } from "src/theme";
 import { appendSearchString, getSearchQuery, handleError } from "src/utils";
@@ -49,7 +50,9 @@ export const SignupPortalContent: React.FC = () => {
   const [submitting, setSubmitting] = useState(false);
   const { search } = useLocation();
   const navigate = useNavigate();
-  const searchQuery = getSearchQuery(search);
+  const searchQuery = getSearchQuery(
+    search
+  ) as unknown as LIVE_APPS_URL_QUERY_DATA;
   const { signup } = useAccountsAuth();
   const [error, setError] = useState(null);
 
@@ -107,7 +110,7 @@ export const SignupPortalContent: React.FC = () => {
       <StyledCustomCard
         header={
           <CustomText align="center" as="h3">
-            Signup
+            Signup to live apps
           </CustomText>
         }
       >

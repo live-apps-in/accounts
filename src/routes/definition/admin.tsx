@@ -10,7 +10,7 @@ export const adminRoutes: ROUTES_DEFINITION = [
     element: (
       <>
         <Helmet>
-          <title>Admin</title>
+          <title>Accounts - Admin</title>
         </Helmet>
         <Authenticated roles={["admin"]}>
           <AdminLayout>

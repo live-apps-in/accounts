@@ -6,14 +6,17 @@ import { AUTH_PROVIDER } from "src/config";
 
 // redux
 // #rbac-setup
-export type ROLE = "donor" | "admin";
+export type ROLE = "admin";
 
 export interface AUTH_DATA {
-  name: string;
-  email: string;
-  token: string;
   role: ROLE;
-  _id?: string;
+  apps: {
+    ping: { isActive: boolean; userId: string };
+  };
+  id: string;
+  email: string;
+  name: string;
+  platform: "ping" | "accounts";
   image?: string | null;
 }
 
@@ -41,12 +44,10 @@ export type API_HEADER_AUTH_DETAILS = {
 
 // users
 export interface USER_STATE {
-  profile: USER_PROFILE;
+  profile?: USER_PROFILE | null;
 }
 
-export interface USER_PROFILE {
-  donor_registered?: boolean;
-}
+export interface USER_PROFILE extends AUTH_DATA {}
 
 // hooks
 // auth
@@ -104,6 +105,18 @@ export type LIVE_APPS_VALIDATE_OTP_RESPONSE = {
   refreshToken: string;
   token: string;
 };
+
+// query details from the webpage url
+export type LIVE_APPS_URL_QUERY_DATA = {
+  redirectUrl: string;
+  signup?: boolean;
+};
+
+// query details to be present while the authentication flow
+export type ACCOUNTS_AUTH_FLOW_QUERY_DATA = {
+  backToURL?: string;
+} & LIVE_APPS_URL_QUERY_DATA &
+  API_HEADER_AUTH_DETAILS;
 
 // ---------------------------------------------------------------- //
 

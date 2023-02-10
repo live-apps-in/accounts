@@ -8,6 +8,7 @@ import {
 import { createApiFunction } from "src/utils";
 import { gateway } from "./gateway";
 
+// the accounts - live apps uses itself as a dependency for auathentication
 class AccountsAuthApi {
   signinWithLiveApps(details: LIVE_APPS_LOGIN_DETAILS): Promise<void> {
     return createApiFunction(() =>

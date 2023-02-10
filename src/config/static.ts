@@ -2,9 +2,7 @@
 
 export const authConfig = {
   authPage: "/auth", // exact page where the user will be redirected if not loggedin
-  oauthPage: "/auth/oauth/:provider",
-  signupPage: "/auth/signup",
-  twoFactorAuthenticationPage: "/auth/2fa/send_otp/:email",
+  liveAppsPortal: process.env.REACT_APP_LIVE_APPS_PORTAL,
   liveAppsLoginPage: "/oauth/login",
   liveAppsSignupPage: "/oauth/signup",
   liveAppsTwoFactorAuthenticationPage: "/oauth/2fa/send_otp/:email",
@@ -32,11 +30,10 @@ export const platformConfig = {
 
 // #rbac-setup
 export const rbacConfig = {
-  roles: ["userRole"],
+  roles: ["admin"],
   homePage: {
     auth: "/auth",
     admin: "/admin",
-    userRole: "/user-role",
     // undefined: "/", // incase of user role is undefined
   },
   // publicRoutes: ["/verification"], // pages that doesn't need authentication to be displayed on the screen

@@ -30,10 +30,6 @@ export const routes: ROUTE_DEFINITION[] = [
   },
   {
     path: "/",
-    children: [...routeDefinition.userRole],
-  },
-  {
-    path: "/",
     children: [...routeDefinition.admin],
   },
   ...routeDefinition.public,

@@ -2,9 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { USER_STATE, USER_PROFILE } from "src/model";
 
 const initialState: USER_STATE = {
-  profile: {
-    donor_registered: false,
-  },
+  profile: null,
 };
 
 const userSlice = createSlice({
@@ -16,9 +14,7 @@ const userSlice = createSlice({
       action: PayloadAction<Partial<USER_PROFILE>>
     ) => ({
       ..._state,
-      profile: {
-        ...action.payload,
-      },
+      profile: action.payload ? { ..._state.profile, ...action.payload } : null,
     }),
   },
 });

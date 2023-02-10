@@ -1,10 +1,13 @@
-import { USER_PROFILE } from "src/model";
+import { platformConfig } from "src/config";
+import { AUTH_DATA } from "src/model";
 import { createApiFunction } from "src/utils";
 import { gateway } from "./gateway";
 
 class UserApi {
-  fetchProfile(): Promise<USER_PROFILE> {
-    return createApiFunction(() => gateway.get("/user/profile"));
+  profile(): Promise<AUTH_DATA> {
+    return createApiFunction(() =>
+      gateway.get(`/${platformConfig.accounts}/profile`)
+    );
   }
 }
 

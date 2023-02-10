@@ -2,7 +2,7 @@ import { Actions } from "./actions";
 import { Logo } from "./logo";
 import { styled } from "src/utils";
 import { CustomText, FlexRow, JustifyBetween } from "src/components";
-import { customizedTheme as theme, HamburgerIcon, mediaQuery } from "src/theme";
+import { customizedTheme as theme, mediaQuery } from "src/theme";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 

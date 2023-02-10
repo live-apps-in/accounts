@@ -1,119 +1,61 @@
-import { useParams } from "react-router-dom";
-import { authApi, socialAuth, userApi } from "src/api";
-import { authConfig, AUTH_PROVIDER } from "src/config";
-import { useActions, useSelector } from "src/hooks";
+import { userApi, authApi } from "src/api";
+import { authConfig } from "src/config";
 import {
-  USE_AUTH_OPTIONS,
   AUTH_DATA,
-  LOGIN_AUTH_PROPS,
-  USE_O_AUTH_RETURN_TYPE,
-  USE_AUTH_RETURN_TYPE,
-  USE_AUTH_PARAMS,
-  USER_PROFILE,
+  USE_AUTH_OPTIONS,
+  API_HEADER_AUTH_DETAILS,
 } from "src/model";
+import { useSelector } from "src/redux";
 import { deleteCookie, getCookie, setCookie } from "src/utils";
+import { useActions } from "src/hooks";
 
-// TODO: conditional typing for return typing (if isOAuth === true then USE_O_AUTH_RETURN_TYPE else USE_AUTH_RETURN_TYPE)
-export const useAuth = <T>({
-  isOAuth = false,
-}: USE_AUTH_PARAMS = {}): T extends true
-  ? USE_O_AUTH_RETURN_TYPE
-  : USE_AUTH_RETURN_TYPE => {
-  const { authActions, userActions } = useActions();
+export const useAuth = () => {
   const { auth } = useSelector((state) => state);
-  const params = useParams();
-
-  function getOAuthUrl(provider: AUTH_PROVIDER): string {
-    return authConfig.oauthPage.replace(":provider", provider);
-  }
-
-  function fetchProfile({
-    updateRedux = true,
-  }: USE_AUTH_OPTIONS = {}): Promise<USER_PROFILE> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const data = await userApi.fetchProfile();
-        if (updateRedux) userActions.setProfile(data);
-        resolve(data);
-      } catch (err) {
-        reject(err);
-      }
-    });
-  }
-
-  // our api to make a social authentication
-  function handleOAuthLogin(response): Promise<AUTH_DATA> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const data = await authApi.oAuth(response);
-        if (!data.token) throw new Error("Failed to authenticate");
-        resolve(data);
-      } catch (err) {
-        reject(err);
-      }
-    });
-  }
+  const { authActions, userActions } = useActions();
 
   function initialize({
     updateRedux = true,
   }: USE_AUTH_OPTIONS = {}): Promise<AUTH_DATA> {
     return new Promise(async (resolve, reject) => {
       try {
-        // const data: any = {
-        //   name: "Dikshit",
-        //   email: "dikshit@aveoninfotech.com",
-        //   token: "test_token",
-        //   role: "admin",
-        //   _id: "test_id",
-        //   image: null,
-        // };
-        // authActions.initialize({ data, isAuthenticated: true });
-
         const token = getCookie(authConfig.tokenAccessor);
-        if (!token) throw new Error("Session expired");
-        const data = await authApi.initialize();
-        if (!data.token) throw new Error("Failed to authenticate");
-        if (updateRedux)
+        if (!token) {
+          deleteCookie(authConfig.refreshTokenAccessor);
+          throw new Error("Session expired");
+        }
+        // initialize the app by fetching details from profile route (initialize function is replaced by profile route)
+        const data = await userApi.profile();
+        // we don't need to store token and refresh token in the redux. those only should be used from cookies
+        data.role = "admin";
+        if (updateRedux) {
           authActions.initialize({ data, isAuthenticated: true });
-        // once the initialization is successful, fetch the profile right away
-        await fetchProfile();
-
+          userActions.setProfile(data);
+        }
         resolve(data);
       } catch (err) {
         if (updateRedux) authActions.logout();
-        deleteCookie(authConfig.tokenAccessor);
         reject(err);
       }
     });
   }
 
-  // if you want normal credentials authentication, integrate below one with the auth
-  function login(
-    loginData: LOGIN_AUTH_PROPS,
+  async function login(
+    data: API_HEADER_AUTH_DETAILS,
     { updateRedux = true }: USE_AUTH_OPTIONS = {}
   ): Promise<AUTH_DATA> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        // const data: any = {
-        //   name: "Dikshit",
-        //   email: "dikshit@aveoninfotech.com",
-        //   token: "test_token",
-        //   role: "admin",
-        //   _id: "test_id",
-        //   image: null,
-        // };
-        // authActions.login(data);
-        const data = await authApi.login(loginData);
-        if (!data.token) throw new Error("Failed to authenticate");
-        if (updateRedux) authActions.login(data);
-        setCookie(authConfig.tokenAccessor, data.token);
-        // once the login is successful, fetch the profile right away
-        await fetchProfile();
-        resolve(data);
-      } catch (err) {
-        reject(err);
-      }
-    });
+    setCookie(authConfig.tokenAccessor, data.token);
+    setCookie(authConfig.refreshTokenAccessor, data.refreshToken);
+    // fetch auth data from profile (similar action while we initialize our app)
+    const authData = await userApi.profile();
+    // we don't need to store token and refresh token in the redux. those only should be used from cookies
+    delete authData["token"];
+    delete authData["refreshToken"];
+    const loginDetails = { role: "admin", ...authData };
+    if (updateRedux) {
+      authActions.login(loginDetails);
+      userActions.setProfile(loginDetails);
+    }
+    return loginDetails;
   }
 
   function logout({
@@ -123,43 +65,25 @@ export const useAuth = <T>({
       try {
         await authApi.logout();
         deleteCookie(authConfig.tokenAccessor);
+        deleteCookie(authConfig.refreshTokenAccessor);
         window.location.reload();
         if (updateRedux) authActions.logout();
         resolve();
       } catch (err) {
         if (updateRedux) authActions.logout();
         deleteCookie(authConfig.tokenAccessor);
+        deleteCookie(authConfig.refreshTokenAccessor);
         window.location.reload();
         reject(err);
       }
     });
   }
 
-  // only works for OAuth type
-  // same function for both signin and signup with social account
-  function authenticate({
-    updateRedux = true,
-  }: USE_AUTH_OPTIONS = {}): Promise<AUTH_DATA> {
-    return new Promise(async (resolve, reject) => {
-      const provider = params?.provider as AUTH_PROVIDER;
-      try {
-        // social account authentication
-        const socialAuthData = await socialAuth(provider);
-        // normal authentication with our api
-        const data = await handleOAuthLogin(socialAuthData);
-        if (updateRedux) authActions.login(data);
-        setCookie(authConfig.tokenAccessor, data.token);
-        if (updateRedux) authActions.login(data);
-        // once the authentication is successful, fetch the profile right away
-        await fetchProfile();
-        resolve(data);
-      } catch (err) {
-        reject(err);
-      }
-    });
-  }
-
-  if (isOAuth)
-    return { ...auth, authenticate, initialize, logout, getOAuthUrl } as any;
-  return { ...auth, login, initialize, logout } as any;
+  const authUtils = {
+    initialize,
+    login,
+    logout,
+    ...auth,
+  };
+  return authUtils;
 };

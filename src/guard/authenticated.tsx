@@ -3,6 +3,7 @@ import { useAuth } from "src/hooks";
 // import { useOAuth } from "src/hooks";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getSearchString } from "src/utils";
 
 // this guard will redirect the page if the user is not authenticated
 export const Authenticated: React.FunctionComponent<{
@@ -17,8 +18,9 @@ export const Authenticated: React.FunctionComponent<{
 
   useEffect(() => {
     if (!isAuthenticated || !data) {
-      const url = `${authConfig.authPage}?backToURL=${pathname}`;
-      navigate(url);
+      navigate(
+        `${authConfig.authPage}?${getSearchString({ backToURL: pathname })}`
+      );
     } else {
       const userRole = data?.role;
       // if the user's role doesn't match, then redirect user to 404 page

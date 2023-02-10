@@ -6,6 +6,7 @@ import {
 } from "src/model";
 import { accountsAuthApi } from "src/api/accounts-auth";
 
+// accounts auth - authentication hook for oauth service for live apps applications
 // nothing is stored in redux/cookie, every details should be used locally and sent through query params using the redirect url
 // in future this logic will be moved to a separate
 export const useAccountsAuth = () => {

@@ -1,13 +1,20 @@
 import { navigationLinks } from "src/routes";
 import { Header } from "./header";
-import { styled } from "src/utils";
-import { CustomButton, CustomDropdown, FlexRow } from "src/components";
+import { getSearchString, styled } from "src/utils";
 import { layoutSettings } from "./layout-settings";
 import { useAuth } from "src/hooks";
-import { useEffect, useState } from "react";
-import { authConfig } from "src/config";
-import { getValidRouteName, isActiveRoute, removeSlashAtLast } from "src/utils";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { authConfig, projectConfig } from "src/config";
+import { useLocation } from "react-router-dom";
+import {
+  Avatar,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+} from "@fluentui/react-components";
+import { customizedTheme as theme } from "src/theme";
 
 const MainContentWrapper = styled("div")`
   background: linear-gradient(14deg, #33d4fb, #fbccff 28%, #fff 63%);
@@ -18,22 +25,18 @@ const MainContentWrapper = styled("div")`
   max-height: 100vh;
 `;
 
-const StyledActionsWrapper = styled(FlexRow)`
-  align-items: center;
+const StyledMenuPopover = styled(MenuPopover)`
+  background: ${theme.colors.themeColors.white};
 `;
 
 export const AdminLayout: React.FC<{ children?: React.ReactNode }> = ({
   children,
 }) => {
-  const { pathname } = useLocation();
-  const { logout } = useAuth();
+  const { search } = useLocation();
+  const { isAuthenticated, data, logout } = useAuth();
+  const image = data?.image || null;
+  const name = data?.name || null;
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const [updatedPathname, setUpdatedPathname] = useState(pathname);
-
-  useEffect(() => {
-    setUpdatedPathname(pathname);
-  }, [pathname]);
 
   const handleLogout = async () => {
     setLoading(true);
@@ -46,26 +49,31 @@ export const AdminLayout: React.FC<{ children?: React.ReactNode }> = ({
   };
 
   const actions = (
-    <StyledActionsWrapper>
-      <CustomDropdown
-        variant="filled-darker"
-        appearance="subtle"
-        selectedOptions={[removeSlashAtLast(updatedPathname)]}
-        options={navigationLinks.adminLayout.map((el) => ({
-          value: el.path,
-          label: el.name,
-        }))}
-        onChange={({ target: { value } }) => navigate(getValidRouteName(value))}
-      />
-      {
-        // display only if its not the signup page
-        !isActiveRoute({ path: pathname, route: authConfig.signupPage }) && (
-          <CustomButton loading={loading} onClick={handleLogout}>
-            Logout
-          </CustomButton>
-        )
-      }
-    </StyledActionsWrapper>
+    <Menu>
+      <MenuTrigger>
+        {isAuthenticated ? (
+          <Avatar name={name} image={{ src: image }} />
+        ) : (
+          <a
+            href={`${authConfig.liveAppsPortal}?${getSearchString({
+              // include the current search string to the redirect url, to reuse it every where
+              // liveapps portal will giveback the search string we pass to the redirecturl
+              redirectUrl: `${projectConfig.appBaseurl}${authConfig.authPage}${search}`,
+            })}}`}
+          >
+            <Avatar name={name} image={{ src: image }} />
+          </a>
+        )}
+      </MenuTrigger>
+      <StyledMenuPopover>
+        <MenuList>
+          <MenuItem>Profile</MenuItem>
+          <MenuItem onClick={!loading && handleLogout}>
+            {loading ? "..." : "Logout"}
+          </MenuItem>
+        </MenuList>
+      </StyledMenuPopover>
+    </Menu>
   );
 
   return (

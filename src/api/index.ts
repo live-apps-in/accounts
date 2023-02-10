@@ -1,6 +1,5 @@
 export * from "./auth";
 export * from "./user";
-export * from "./services";
 export * from "./other-api-name";
 export * from "./gateway";
 
