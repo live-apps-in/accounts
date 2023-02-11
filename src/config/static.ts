@@ -13,6 +13,7 @@ export const authConfig = {
 
 export const projectConfig = {
   title: "Live Apps - Accounts",
+  description: "Authentication service for apps under live apps",
   defaultTheme: "pure-light-theme",
   defaultPhonenumberCountry: "IN" as any,
   appBaseurl: window.location.origin,

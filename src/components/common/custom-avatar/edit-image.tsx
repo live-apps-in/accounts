@@ -22,10 +22,11 @@ import {
   DialogSurface,
 } from "@fluentui/react-components/unstable";
 import { DefaultAvatar } from "src/assets";
+import { customizedTheme as theme } from "src/theme";
 
 const StepContentWrapper = styled(({ children, ...props }: any) => (
   <Dialog {...props} open aria-label="modal">
-    <DialogSurface>
+    <DialogSurface style={{ backgroundColor: theme.colors.themeColors.white }}>
       <DialogBody aria-label="modal">{children}</DialogBody>
     </DialogSurface>
   </Dialog>

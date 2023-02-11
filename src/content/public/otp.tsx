@@ -29,7 +29,6 @@ const StyledCustomCard = styled(CustomCard)`
   max-width: 500px;
   padding: 30px 50px;
   border-radius: 20px;
-  background-color: ${theme.colors.themeColors.white};
   margin-top: -${layoutSettings.header.height};
   display: flex;
   flex-direction: column;

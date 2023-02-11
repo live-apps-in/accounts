@@ -32,7 +32,6 @@ const StyledCustomCard = styled(CustomCard)`
   max-width: 500px;
   padding: 30px 50px;
   border-radius: 20px;
-  background-color: ${theme.colors.themeColors.white};
   margin-top: -${layoutSettings.header.height};
   display: flex;
   flex-direction: column;
@@ -105,7 +104,7 @@ export const LoginPortalContent: React.FC = () => {
       <StyledCustomCard
         header={
           <CustomText align="center" as="h3">
-            Signin With Live Apps email
+            Signin with Live Apps email
           </CustomText>
         }
       >

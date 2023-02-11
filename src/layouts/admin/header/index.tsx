@@ -10,6 +10,9 @@ import { Helmet } from "react-helmet";
 const StyledDesktopHeaderWrapper = styled(JustifyBetween)`
   padding: 20px 10vw;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
   ${mediaQuery.down(1200)} {
     display: none;
   }
@@ -18,6 +21,9 @@ const StyledDesktopHeaderWrapper = styled(JustifyBetween)`
 const StyledTabletHeaderWrapper = styled(JustifyBetween)`
   padding: 20px 5vw;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
   ${mediaQuery.down("md")} {
     display: none;
   }
@@ -30,6 +36,9 @@ const StyledMobileHeaderWrapper = styled(JustifyBetween)`
   width: 100%;
   background-color: ${theme.colors.themeColors.primary};
   padding: 10px 19px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
   align-items: center;
   ${mediaQuery.up("md")} {
     display: none;

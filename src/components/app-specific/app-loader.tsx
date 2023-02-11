@@ -14,7 +14,7 @@ const StyledApploaderWrapper = styled(XYCenter)`
     height: 40px;
     border-radius: 10px;
   }
-  ${mediaQuery.up("sm")} {
+  ${mediaQuery.up("md")} {
     img {
       width: 80px;
       height: 80px;

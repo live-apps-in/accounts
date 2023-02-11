@@ -401,6 +401,7 @@ export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
       padding: "20px",
       overflow: "visible",
       boxSizing: "border-box",
+      backgroundColor: themeColors.white,
     },
   },
 };

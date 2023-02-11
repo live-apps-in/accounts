@@ -11,8 +11,14 @@ import {
 } from "@fluentui/react-components";
 import { authConfig, projectConfig } from "src/config";
 import { useLocation } from "react-router-dom";
+import { layoutSettings } from "./layout-settings";
 
-const MainContentWrapper = styled("div")``;
+const MainContentWrapper = styled("div")`
+  width: 100vw;
+  max-width: 100vw;
+  min-height: calc(100vh - ${layoutSettings.header.height});
+  overflow: hidden;
+`;
 
 const BackgroundDivision = styled("div")`
   background: linear-gradient(14deg, #33d4fb, #fbccff 28%, #fff 63%);
