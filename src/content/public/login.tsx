@@ -21,6 +21,7 @@ import {
 } from "src/utils";
 import { ACCOUNT_SESSIONS, LIVE_APPS_URL_QUERY_DATA } from "src/model";
 import { Sessions } from "./components";
+import { CursorClick24Regular } from "@fluentui/react-icons";
 
 const StyledLoginPageWrapper = styled(XYCenter)`
   width: 100%;
@@ -47,6 +48,11 @@ const StyledCustomCard = styled(CustomCard)`
     align-items: center;
     justify-content: center;
   }
+`;
+
+const StyledFooterContainer = styled(XYCenter)`
+  flex-wrap: wrap;
+  gap: 10px;
 `;
 
 export const LoginPortalContent: React.FC = () => {
@@ -129,23 +135,27 @@ export const LoginPortalContent: React.FC = () => {
               <CustomButton type="submit" loading={submitting}>
                 Signin with Live apps
               </CustomButton>
-              <CustomButton
-                type="button"
-                appearance="secondary"
-                onClick={() => toggleSessions(true)}
-              >
-                Choose Account
-              </CustomButton>
             </form>
-            <CustomButton
-              buttonType="link"
-              href={`${authConfig.liveAppsSignupPage}?${appendSearchString([
-                search,
-                { signup: true },
-              ])}`}
-            >
-              Signup with a New Account
-            </CustomButton>
+            <StyledFooterContainer>
+              {sessions.length > 0 && (
+                <CustomButton
+                  icon={<CursorClick24Regular />}
+                  appearance="outline"
+                  onClick={() => toggleSessions(true)}
+                >
+                  Choose Account
+                </CustomButton>
+              )}
+              <CustomButton
+                buttonType="link"
+                href={`${authConfig.liveAppsSignupPage}?${appendSearchString([
+                  search,
+                  { signup: true },
+                ])}`}
+              >
+                Signup with a New Account
+              </CustomButton>
+            </StyledFooterContainer>
           </>
         )}
       </StyledCustomCard>
