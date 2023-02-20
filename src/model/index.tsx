@@ -120,6 +120,15 @@ export type ACCOUNTS_AUTH_FLOW_QUERY_DATA = {
 
 // ---------------------------------------------------------------- //
 
+// accounts session stored in local storage
+export type ACCOUNTS_SESSION_DETAILS = {
+  name?: string;
+  email?: string;
+  image?: string | null;
+};
+
+export type ACCOUNT_SESSIONS = ACCOUNTS_SESSION_DETAILS[];
+
 export interface EXAMPLE_API_RESPONSE {
   test?: "test";
 }

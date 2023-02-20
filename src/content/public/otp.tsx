@@ -8,6 +8,7 @@ import { useAccountsAuth } from "src/hooks";
 import { authConfig } from "src/config";
 import { layoutSettings } from "src/layouts/public/layout-settings";
 import { customizedTheme as theme } from "src/theme";
+import { ACCOUNTS_SESSION_DETAILS, ACCOUNT_SESSIONS } from "src/model";
 
 const StyledOTPPageContainer = styled("div")`
   display: grid;
@@ -74,6 +75,11 @@ export const OTPPortal = () => {
     setSubmitting(true);
     try {
       const data = await validateOTP({ email, otp });
+
+      // save the current session in local storage
+      saveSession({ email });
+
+      // prepare to redirect back
       const [redirectUrl = "", redirectUrlSearch = ""] =
         searchQuery.redirectUrl?.split("?") || [];
       // include return data with the previously present search query in the redirect url
@@ -104,6 +110,16 @@ export const OTPPortal = () => {
       handleError(err);
     }
     setResending(false);
+  };
+
+  const saveSession = (session: ACCOUNTS_SESSION_DETAILS) => {
+    const sessions: ACCOUNT_SESSIONS = JSON.parse(
+      localStorage.getItem("sessions") || "[]"
+    );
+    if (!sessions.some((el) => el.email === session.email)) {
+      sessions.push(session);
+    }
+    localStorage.setItem("sessions", JSON.stringify(sessions));
   };
 
   return (

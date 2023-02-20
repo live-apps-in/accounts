@@ -12,7 +12,6 @@ import {
 import { authConfig } from "src/config";
 import { useAccountsAuth } from "src/hooks";
 import { layoutSettings } from "src/layouts/public/layout-settings";
-import { customizedTheme as theme } from "src/theme";
 import { liveAppsAccountsPortalSigninSchema } from "src/schema";
 import {
   appendSearchString,
@@ -20,7 +19,8 @@ import {
   handleError,
   styled,
 } from "src/utils";
-import { LIVE_APPS_URL_QUERY_DATA } from "src/model";
+import { ACCOUNT_SESSIONS, LIVE_APPS_URL_QUERY_DATA } from "src/model";
+import { Sessions } from "./components";
 
 const StyledLoginPageWrapper = styled(XYCenter)`
   width: 100%;
@@ -58,6 +58,10 @@ export const LoginPortalContent: React.FC = () => {
   const navigate = useNavigate();
   const { login } = useAccountsAuth();
   const [error, setError] = useState(null);
+  const sessions: ACCOUNT_SESSIONS = JSON.parse(
+    localStorage.getItem("sessions") || "[]"
+  );
+  const [isSessions, setIsSessions] = useState(sessions.length > 0);
 
   useEffect(() => {
     if (!searchQuery?.redirectUrl) {
@@ -99,6 +103,8 @@ export const LoginPortalContent: React.FC = () => {
     },
   ];
 
+  const toggleSessions = (isSession) => setIsSessions(isSession);
+
   return (
     <StyledLoginPageWrapper>
       <StyledCustomCard
@@ -110,27 +116,38 @@ export const LoginPortalContent: React.FC = () => {
       >
         {error ? (
           <CustomText as="h3">{error}</CustomText>
+        ) : isSessions ? (
+          <Sessions sessions={sessions} toggleSessions={toggleSessions} />
         ) : (
-          <form onSubmit={formik.handleSubmit}>
-            <RecursiveContainer
-              config={config}
-              formik={formik}
-              validationSchema={liveAppsAccountsPortalSigninSchema}
-            />
-            <CustomButton type="submit" loading={submitting}>
-              Signin with Live apps
+          <>
+            <form onSubmit={formik.handleSubmit}>
+              <RecursiveContainer
+                config={config}
+                formik={formik}
+                validationSchema={liveAppsAccountsPortalSigninSchema}
+              />
+              <CustomButton type="submit" loading={submitting}>
+                Signin with Live apps
+              </CustomButton>
+              <CustomButton
+                type="button"
+                appearance="secondary"
+                onClick={() => toggleSessions(true)}
+              >
+                Choose Account
+              </CustomButton>
+            </form>
+            <CustomButton
+              buttonType="link"
+              href={`${authConfig.liveAppsSignupPage}?${appendSearchString([
+                search,
+                { signup: true },
+              ])}`}
+            >
+              Signup with a New Account
             </CustomButton>
-          </form>
+          </>
         )}
-        <CustomButton
-          buttonType="link"
-          href={`${authConfig.liveAppsSignupPage}?${appendSearchString([
-            search,
-            { signup: true },
-          ])}`}
-        >
-          Signup with a New Account
-        </CustomButton>
       </StyledCustomCard>
     </StyledLoginPageWrapper>
   );

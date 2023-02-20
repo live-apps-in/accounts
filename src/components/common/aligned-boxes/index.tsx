@@ -1,4 +1,5 @@
 export * from "./flex-row";
+export * from "./flex-column";
 export * from "./justify-between";
 export * from "./x-y-center";
 export * from "./x-center";
