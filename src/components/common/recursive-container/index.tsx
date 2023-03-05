@@ -1,6 +1,9 @@
 import { RECURSIVE_CONTAINER_PROPS } from "./model";
 import { Field } from "./components";
+import { styled } from "src/utils";
 // import classes from 'assets/scss/recursive-container.module.scss';
+
+const StyledDiv = styled("div")((props) => ({ ...props.style }));
 
 export const RecursiveContainer: React.FC<RECURSIVE_CONTAINER_PROPS> = (
   props
@@ -43,7 +46,7 @@ export const RecursiveContainer: React.FC<RECURSIVE_CONTAINER_PROPS> = (
   const recursiveContainer = FormContainer ? (
     formElements
   ) : (
-    <div
+    <StyledDiv
       {...formContainerProps}
       // style={{
       //   display: 'flex',
@@ -54,7 +57,7 @@ export const RecursiveContainer: React.FC<RECURSIVE_CONTAINER_PROPS> = (
       // }}
     >
       {formElements}
-    </div>
+    </StyledDiv>
   );
 
   return FormContainer ? (

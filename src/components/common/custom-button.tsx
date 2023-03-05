@@ -27,7 +27,7 @@ const StyledButton = styled(Button)((props) => {
     ...buttonStyle,
     ...(!!props.shape && { borderRadius: undefined }),
     ...(!!props.socialName && getButtonStyle(props.socialName, props.size)),
-    ...(!!props.fullWidth && { width: "100%" }),
+    ...(!!props.fullWidth && { width: "100%", maxWidth: "100%" }),
   };
 });
 const StyledCompoundButton = styled(CompoundButton)((props) => {
@@ -36,7 +36,7 @@ const StyledCompoundButton = styled(CompoundButton)((props) => {
     ...buttonStyle,
     ...(!!props.shape && { borderRadius: undefined }),
     ...(!!props.socialName && getButtonStyle(props.socialName, props.size)),
-    ...(!!props.fullWidth && { width: "100%" }),
+    ...(!!props.fullWidth && { width: "100%", maxWidth: "100%" }),
   };
 });
 const StyledLinkButton = styled(Button)((props) => {
@@ -45,7 +45,7 @@ const StyledLinkButton = styled(Button)((props) => {
     ...buttonStyle,
     ...(!!props.shape && { borderRadius: undefined }),
     ...(!!props.socialName && getButtonStyle(props.socialName, props.size)),
-    ...(!!props.fullWidth && { width: "100%" }),
+    ...(!!props.fullWidth && { width: "100%", maxWidth: "100%" }),
   };
 });
 

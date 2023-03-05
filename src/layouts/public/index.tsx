@@ -20,15 +20,15 @@ const MainContentWrapper = styled("div")`
   overflow: hidden;
 `;
 
-const BackgroundDivision = styled("div")`
-  background: linear-gradient(14deg, #33d4fb, #fbccff 28%, #fff 63%);
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  position: fixed;
-  top: 0;
-  z-index: -1;
-`;
+// const BackgroundDivision = styled("div")`
+//   background: linear-gradient(14deg, #33d4fb, #fbccff 28%, #fff 63%);
+//   width: 100vw;
+//   height: 100vh;
+//   left: 0;
+//   position: fixed;
+//   top: 0;
+//   z-index: -1;
+// `;
 
 export const PublicLayout = ({ children }) => {
   const { isAuthenticated, data } = useAuth();
@@ -69,7 +69,7 @@ export const PublicLayout = ({ children }) => {
     <>
       <Header actions={actions} />
       <MainContentWrapper>{children}</MainContentWrapper>
-      <BackgroundDivision />
+      {/* <BackgroundDivision /> */}
     </>
   );
 };

@@ -23,7 +23,7 @@ const StyledInputContainerWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  // overflow: hidden;
 `;
 
 export const InputContainer: React.FC<INPUT_CONTAINER_PROPS> = (props) => {

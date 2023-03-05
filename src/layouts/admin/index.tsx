@@ -24,15 +24,15 @@ const MainContentWrapper = styled("div")`
   max-height: 100vh;
 `;
 
-const BackgroundDivision = styled("div")`
-  background: linear-gradient(14deg, #33d4fb, #fbccff 28%, #fff 63%);
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  position: fixed;
-  top: 0;
-  z-index: -1;
-`;
+// const BackgroundDivision = styled("div")`
+//   background: linear-gradient(14deg, #33d4fb, #fbccff 28%, #fff 63%);
+//   width: 100vw;
+//   height: 100vh;
+//   left: 0;
+//   position: fixed;
+//   top: 0;
+//   z-index: -1;
+// `;
 
 const StyledMenuPopover = styled(MenuPopover)`
   background: ${theme.colors.themeColors.white};
@@ -89,7 +89,7 @@ export const AdminLayout: React.FC<{ children?: React.ReactNode }> = ({
     <>
       <Header navigationLinks={navigationLinks.adminLayout} actions={actions} />
       <MainContentWrapper>{children}</MainContentWrapper>
-      <BackgroundDivision />
+      {/* <BackgroundDivision /> */}
     </>
   );
 };

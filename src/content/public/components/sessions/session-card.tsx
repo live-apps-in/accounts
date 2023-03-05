@@ -60,7 +60,16 @@ export const SessionCard: React.FC<
           <img src={image || DefaultAvatar} alt={email} />
         )}
       </div>
-      <CustomText as="h6">{isAddAccount ? "Add Account" : email}</CustomText>
+      <CustomText
+        as="h6"
+        style={{
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+          textOverflow: "ellipsis",
+        }}
+      >
+        {isAddAccount ? "Add Account" : email}
+      </CustomText>
     </StyledSessionCard>
   );
 };

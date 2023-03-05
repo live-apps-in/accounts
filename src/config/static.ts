@@ -2,7 +2,8 @@
 
 export const authConfig = {
   authPage: "/auth", // exact page where the user will be redirected if not loggedin
-  liveAppsPortal: process.env.REACT_APP_LIVE_APPS_PORTAL,
+  liveAppsPortal: "http://localhost:3000/oauth/login",
+  // liveAppsPortal: process.env.REACT_APP_LIVE_APPS_PORTAL,
   liveAppsLoginPage: "/oauth/login",
   liveAppsSignupPage: "/oauth/signup",
   liveAppsTwoFactorAuthenticationPage: "/oauth/2fa/send_otp/:email",

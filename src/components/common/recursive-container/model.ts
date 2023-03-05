@@ -2,12 +2,17 @@ import type {
   SelectProps,
   DropdownProps,
 } from "@fluentui/react-components/unstable";
-import type { InputProps, SliderProps, TextareaProps } from "@fluentui/react-components";
+import type {
+  InputProps,
+  SliderProps,
+  TextareaProps,
+} from "@fluentui/react-components";
 import type { FeatureProps } from "react-phone-number-input";
 import { ReactDatePickerProps } from "react-datepicker";
 import { Overwrite } from "src/model";
 import { ADDON, INPUT_CONTAINER_PROPS } from "./components";
 import { NumberFormatProps } from "react-number-format";
+import { STYLES } from "src/theme";
 
 // form-elements / recursive-container
 
@@ -432,10 +437,13 @@ export interface RECURSIVE_CONTAINER_PROPS {
   config: CONFIG_TYPE;
   formik: any;
   validationSchema?: any;
-  formContainerProps?: React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
-  >;
+  formContainerProps?: Omit<
+    React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLDivElement>,
+      HTMLDivElement
+    >,
+    "style"
+  > & { style?: STYLES };
   formContainer?: null | React.FC<
     React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLDivElement>,

@@ -78,6 +78,14 @@ const commonButtonStyles: any = {
   width: "fit-content",
 };
 
+const commonInputStyles: any = {
+  ":focus-within, :hover": {
+    borderColor: "inherit !important",
+  },
+  padding: 0,
+  "> input": { padding: "10px" },
+};
+
 export const customButtonStyleBasedOnSize: CUSTOM_BUTTON_STYLE_BASED_ON_SIZE = {
   small: {
     padding: "10px 15px",
@@ -328,10 +336,7 @@ export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
     Input: {
       width: "100%",
       transition: "border-color 0.1s ease",
-      ":focus-within, :hover": {
-        borderColor: "#939596 !important",
-        borderBottom: "1px solid #939596 !important",
-      },
+      ...commonInputStyles,
       ":after": {
         display: "none !important",
       },
@@ -342,15 +347,12 @@ export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
     OutlineInput: {
       border: "1px solid #CED4DA",
       borderRadius: 4,
-      ":focus-within, :hover": {},
+      ...commonInputStyles,
     },
     TextareaInput: {
       width: "100%",
       transition: "border-color 0.1s ease",
-      ":focus-within, :hover": {
-        borderColor: "#939596 !important",
-        borderBottom: "1px solid #939596 !important",
-      },
+      ...commonInputStyles,
       ":after": {
         display: "none !important",
       },
@@ -361,7 +363,7 @@ export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
     OutlineTextAreaInput: {
       border: "1px solid #CED4DA",
       borderRadius: 4,
-      ":focus-within, :hover": {},
+      ...commonInputStyles,
     },
     Select: {
       width: "100%",
@@ -379,10 +381,7 @@ export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
         overflow: "hidden",
         whiteSpace: "nowrap",
       },
-      ":focus-within, :hover": {
-        borderColor: "#939596 !important",
-        borderBottom: "1px solid #939596 !important",
-      },
+      ...commonInputStyles,
       ":after": {
         display: "none !important",
       },
@@ -393,7 +392,7 @@ export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
     OutlineSelect: {
       border: "none",
       borderRadius: 0,
-      ":focus-within, :hover": {},
+      ...commonInputStyles,
     },
 
     // Other
