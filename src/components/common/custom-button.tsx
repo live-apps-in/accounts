@@ -12,8 +12,11 @@ import { capitalize, navigateToUrl } from "src/utils";
 // apply style objects for the component
 // reference - https://styled-components.com/docs/advanced#style-objects
 
-const getButtonStyle = (appearance, size = "medium") => ({
-  ...theme.components[`${capitalize(appearance)}Button`],
+const getButtonStyle = (appearance, size = "medium", colorScheme = "") => ({
+  // no color scheme for link / social buttons
+  ...(colorScheme
+    ? theme.components[`${capitalize(appearance)}Button`].generate(colorScheme)
+    : theme.components[`${capitalize(appearance)}Button`]),
   ...{
     ...theme.components.customButtonStyleBasedOnSize[
       size === null ? "noSize" : size
@@ -22,7 +25,11 @@ const getButtonStyle = (appearance, size = "medium") => ({
 });
 
 const StyledButton = styled(Button)((props) => {
-  const buttonStyle = getButtonStyle(props.appearance, props.size);
+  const buttonStyle = getButtonStyle(
+    props.appearance,
+    props.size,
+    props.colorScheme
+  );
   return {
     ...buttonStyle,
     ...(!!props.shape && { borderRadius: undefined }),
@@ -31,7 +38,11 @@ const StyledButton = styled(Button)((props) => {
   };
 });
 const StyledCompoundButton = styled(CompoundButton)((props) => {
-  const buttonStyle = getButtonStyle(props.appearance, props.size);
+  const buttonStyle = getButtonStyle(
+    props.appearance,
+    props.size,
+    props.colorScheme
+  );
   return {
     ...buttonStyle,
     ...(!!props.shape && { borderRadius: undefined }),
@@ -44,6 +55,7 @@ const StyledLinkButton = styled(Button)((props) => {
   return {
     ...buttonStyle,
     ...(!!props.shape && { borderRadius: undefined }),
+    // no color scheme for link / social buttons
     ...(!!props.socialName && getButtonStyle(props.socialName, props.size)),
     ...(!!props.fullWidth && { width: "100%", maxWidth: "100%" }),
   };
@@ -72,6 +84,7 @@ export interface CUSTOM_BUTTON_PROPS
   fullWidth?: boolean;
   appearance?: "secondary" | "primary" | "outline" | "subtle" | "transparent";
   socialName?: "google" | "facebook" | "twitter" | "instagram" | "linkedin";
+  colorScheme?: "primary" | "secondary" | "success" | "error" | "warning";
 }
 
 export const CustomButton: React.FC<CUSTOM_BUTTON_PROPS> = (props) => {
@@ -81,6 +94,7 @@ export const CustomButton: React.FC<CUSTOM_BUTTON_PROPS> = (props) => {
     href,
     buttonType = "button",
     appearance = "primary",
+    colorScheme = "primary",
     fullWidth = false,
     socialName,
     ...rest
@@ -117,6 +131,7 @@ export const CustomButton: React.FC<CUSTOM_BUTTON_PROPS> = (props) => {
     <ButtonComponent
       icon={loading ? <Spinner appearance="inverted" size="tiny" /> : null}
       {...rest}
+      colorScheme={colorScheme}
       appearance={appearance}
       disabled={loading || props.disabled}
       onClick={href ? () => goto(href) : rest.onClick}

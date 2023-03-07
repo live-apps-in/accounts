@@ -7,14 +7,14 @@ import {
 import { mediaQuery } from "../viewport";
 
 const themeColors = {
-  primary: "#c9e265",
-  primaryHovered: "#c9e265b4",
-  secondary: "#353535",
-  secondaryHovered: "#242222",
+  primary: "#111727",
+  primaryHovered: "#212121",
+  secondary: "#464DE0",
+  secondaryHovered: "#5d63e8",
   success: "#3DAB54",
   successHovered: "#317a40",
   warning: "#de9426",
-  warningHovered: "#317a40",
+  warningHovered: "#edaa47",
   error: "#FF1943",
   errorHovered: "#bf1f3c",
   info: "#33C2FF",
@@ -134,60 +134,116 @@ export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
     //// property based styles
     customButtonStyleBasedOnSize,
     // button variant
-    TransparentButton: { ...commonButtonStyles, color: themeColors.black },
-    OutlineButton: { ...commonButtonStyles },
+    TransparentButton: {
+      generate: (colorScheme) => ({
+        ...commonButtonStyles,
+        "*": {
+          color: `${themeColors[colorScheme]}`,
+        },
+        ":hover": {
+          backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
+        },
+        ":hover, :active": {
+          "*": {
+            color: `${themeColors.white} !important`,
+          },
+          borderColor: "transparant",
+        },
+        ":active": {
+          backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
+        },
+      }),
+    },
+    OutlineButton: {
+      generate: (colorScheme) => ({
+        ...commonButtonStyles,
+        "*": {
+          color: `${themeColors[colorScheme]} !important`,
+        },
+        border: `1px solid ${themeColors[colorScheme]} !important`,
+        ":hover": {
+          backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
+        },
+        ":hover, :active": {
+          "*": {
+            color: `${themeColors.white} !important`,
+          },
+        },
+        ":active": {
+          backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
+        },
+      }),
+    },
     PrimaryButton: {
-      ...commonButtonStyles,
-      color: "white !important",
-      backgroundColor: themeColors.primary,
-      border: "none",
-      ":hover": {
-        backgroundColor: `${themeColors.primaryHovered} !important`,
-        border: "none",
-      },
-      ":active": {
-        backgroundColor: `${themeColors.primaryHovered} !important`,
-        border: "none",
-      },
+      generate: (colorScheme) => ({
+        ...commonButtonStyles,
+        "*": {
+          color: `${themeColors.white} !important`,
+        },
+        backgroundColor: `${themeColors[colorScheme]} !important`,
+        ":hover": {
+          backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
+        },
+        ":hover, :active": {
+          "*": {
+            color: `${themeColors.white} !important`,
+          },
+        },
+        ":active": {
+          backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
+        },
+      }),
     },
     SecondaryButton: {
-      ...commonButtonStyles,
-      color: "white !important",
-      border: "none",
-      backgroundColor: `${themeColors.secondary} !important`,
-      ":hover": {
-        backgroundColor: `${themeColors.secondaryHovered} !important`,
-        color: "white !important",
-        border: "none",
-      },
-      ":active": {
-        color: "white !important",
-        backgroundColor: `${themeColors.secondaryHovered} !important`,
-        border: "none",
-      },
+      generate: (colorScheme) => ({
+        ...commonButtonStyles,
+        "*": {
+          color: `${themeColors.white} !important`,
+        },
+        backgroundColor: `${themeColors[colorScheme]} !important`,
+        ":hover": {
+          backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
+        },
+        ":hover, :active": {
+          "*": {
+            color: `${themeColors.white} !important`,
+          },
+        },
+        ":active": {
+          backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
+        },
+      }),
     },
     SubtleButton: {
-      ...commonButtonStyles,
-      color: "white !important",
-      border: "none",
-      backgroundColor: `${themeColors.success} !important`,
-      ":hover": {
-        color: "white !important",
-        backgroundColor: `${themeColors.successHovered} !important`,
-        border: "none",
-      },
-      ":active": {
-        color: "white !important",
-        backgroundColor: `${themeColors.successHovered} !important`,
-        border: "none",
-      },
+      generate: (colorScheme) => ({
+        ...commonButtonStyles,
+        "*": {
+          color: `${themeColors[`${colorScheme}`]}`,
+        },
+        ":hover": {
+          backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
+        },
+        ":hover, :active": {
+          "*": {
+            color: `${themeColors.white} !important`,
+          },
+          borderColor: "transparant",
+        },
+        ":active": {
+          backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
+        },
+      }),
     },
     LinkButton: {
       padding: 0,
       textAlign: "left",
       fontWeight: "normal",
       color: themeColors.link,
-      background: "none",
+      "*": {
+        color: themeColors.link,
+      },
+      background: "none !important",
+      backgroundColor: "transparent !important",
       width: "fit-content",
       ":hover": {
         color: `${themeColors.link} !important`,
@@ -360,7 +416,7 @@ export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
         color: "#969696",
       },
     },
-    OutlineTextAreaInput: {
+    OutlineTextareaInput: {
       border: "1px solid #CED4DA",
       borderRadius: 4,
       ...commonInputStyles,

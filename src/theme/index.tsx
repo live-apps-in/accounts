@@ -81,6 +81,13 @@ export interface CUSTOMIZED_THEME_COLORS {
   };
 }
 
+export type CUSTOM_BUTTON_COLOR_SCHEMES =
+  | "primary"
+  | "secondary"
+  | "success"
+  | "error"
+  | "warning";
+
 export type CUSTOM_BUTTON_STYLE_BASED_ON_SIZE = Record<
   CUSTOM_BUTTON_PROPS["size"] | "noSize",
   STYLES
@@ -122,11 +129,21 @@ export interface CUSTOM_THEME {
     OutlineTextareaInput?: STYLES;
     Select?: STYLES;
     OutlineSelect?: STYLES;
-    TransparentButton?: STYLES;
-    OutlineButton?: STYLES;
-    PrimaryButton?: STYLES;
-    SecondaryButton?: STYLES;
-    SubtleButton?: STYLES;
+    TransparentButton: {
+      generate: (colorScheme: CUSTOM_BUTTON_COLOR_SCHEMES) => STYLES;
+    };
+    OutlineButton: {
+      generate: (colorScheme: CUSTOM_BUTTON_COLOR_SCHEMES) => STYLES;
+    };
+    PrimaryButton: {
+      generate: (colorScheme: CUSTOM_BUTTON_COLOR_SCHEMES) => STYLES;
+    };
+    SecondaryButton: {
+      generate: (colorScheme: CUSTOM_BUTTON_COLOR_SCHEMES) => STYLES;
+    };
+    SubtleButton: {
+      generate: (colorScheme: CUSTOM_BUTTON_COLOR_SCHEMES) => STYLES;
+    };
     LinkButton?: STYLES;
     GoogleButton?: STYLES;
     MicrosoftButton?: STYLES;
@@ -135,7 +152,8 @@ export interface CUSTOM_THEME {
     LinkedinButton?: STYLES;
     InstagramButton?: STYLES;
     customButtonStyleBasedOnSize?: CUSTOM_BUTTON_STYLE_BASED_ON_SIZE;
-    [ComponentName: string]: STYLES;
+    Card: STYLES;
+    // [ComponentName: string]: STYLES;
   };
 }
 

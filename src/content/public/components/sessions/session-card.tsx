@@ -1,19 +1,20 @@
 import { PersonAdd24Regular } from "@fluentui/react-icons";
 import { useLocation } from "react-router-dom";
 import { DefaultAvatar } from "src/assets";
-import { CustomText } from "src/components";
+import { CustomButton, CustomText } from "src/components";
 import { authConfig } from "src/config";
 import { ACCOUNTS_SESSION_DETAILS } from "src/model";
 import { styled } from "src/utils";
 
-const StyledSessionCard = styled("a")`
-  padding: 20px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
+const StyledSessionCard = styled(CustomButton)`
+  border-radius: 7px;
+  max-width: 100%;
+  width: 100%;
+  height: fit-content;
   display: grid;
   grid-template-columns: 50px auto;
   align-items: center;
+  justify-content: start;
   gap: 20px;
   div {
     width: 50px;
@@ -28,7 +29,7 @@ const StyledSessionCard = styled("a")`
     }
   }
   &:hover {
-    background: lightgrey;
+    background: #f5f8ff;
   }
 `;
 
@@ -52,6 +53,7 @@ export const SessionCard: React.FC<
     <StyledSessionCard
       onClick={isAddAccount ? () => toggleSessions(false) : undefined}
       href={generatedHref}
+      appearance="outline"
     >
       <div>
         {isAddAccount ? (

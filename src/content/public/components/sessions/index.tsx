@@ -17,7 +17,6 @@ export const Sessions: React.FC<
       {sessions.map((el) => (
         <>
           <SessionCard {...el} key={el.email} />
-          <Divider />
         </>
       ))}
       <SessionCard isAddAccount toggleSessions={toggleSessions} />
