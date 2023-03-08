@@ -4,6 +4,7 @@ import {
   CUSTOMIZED_THEME_COLORS,
   CUSTOM_BUTTON_STYLE_BASED_ON_SIZE,
 } from "src/theme";
+import alpha from "color-alpha";
 import { mediaQuery } from "../viewport";
 
 const themeColors = {
@@ -76,6 +77,7 @@ const commonButtonStyles: any = {
   fontFamily: globalStyles.fontFamily,
   fontWeight: 300,
   width: "fit-content",
+  transition: "background-color 0.2s ease",
 };
 
 const commonInputStyles: any = {
@@ -137,6 +139,7 @@ export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
     TransparentButton: {
       generate: (colorScheme) => ({
         ...commonButtonStyles,
+        color: `${themeColors[colorScheme]}`,
         "*": {
           color: `${themeColors[colorScheme]}`,
         },
@@ -144,6 +147,7 @@ export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
           backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
         },
         ":hover, :active": {
+          color: `${themeColors.white} !important`,
           "*": {
             color: `${themeColors.white} !important`,
           },
@@ -157,26 +161,35 @@ export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
     OutlineButton: {
       generate: (colorScheme) => ({
         ...commonButtonStyles,
+        color: `${themeColors[colorScheme]} !important`,
         "*": {
           color: `${themeColors[colorScheme]} !important`,
         },
         border: `1px solid ${themeColors[colorScheme]} !important`,
         ":hover": {
-          backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
+          backgroundColor: `${alpha(
+            themeColors[`${colorScheme}Hovered`],
+            0.5
+          )} !important`,
         },
         ":hover, :active": {
+          color: `${themeColors.white} !important`,
           "*": {
             color: `${themeColors.white} !important`,
           },
         },
         ":active": {
-          backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
+          backgroundColor: `${alpha(
+            themeColors[`${colorScheme}Hovered`],
+            0.7
+          )} !important`,
         },
       }),
     },
     PrimaryButton: {
       generate: (colorScheme) => ({
         ...commonButtonStyles,
+        color: `${themeColors.white} !important`,
         "*": {
           color: `${themeColors.white} !important`,
         },
@@ -185,6 +198,7 @@ export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
           backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
         },
         ":hover, :active": {
+          color: `${themeColors.white} !important`,
           "*": {
             color: `${themeColors.white} !important`,
           },
@@ -197,6 +211,7 @@ export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
     SecondaryButton: {
       generate: (colorScheme) => ({
         ...commonButtonStyles,
+        color: `${themeColors.white} !important`,
         "*": {
           color: `${themeColors.white} !important`,
         },
@@ -205,6 +220,7 @@ export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
           backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
         },
         ":hover, :active": {
+          color: `${themeColors.white} !important`,
           "*": {
             color: `${themeColors.white} !important`,
           },
@@ -217,13 +233,15 @@ export const PureLightThemeCustomization: CUSTOMIZED_THEME = {
     SubtleButton: {
       generate: (colorScheme) => ({
         ...commonButtonStyles,
+        color: `${themeColors[`${colorScheme}`]} !important`,
         "*": {
-          color: `${themeColors[`${colorScheme}`]}`,
+          color: `${themeColors[`${colorScheme}`]} !important`,
         },
         ":hover": {
           backgroundColor: `${themeColors[`${colorScheme}Hovered`]} !important`,
         },
         ":hover, :active": {
+          color: `${themeColors.white} !important`,
           "*": {
             color: `${themeColors.white} !important`,
           },

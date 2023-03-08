@@ -125,6 +125,7 @@ export const LoginFormContent: React.FC = () => {
                 icon={<CursorClick24Regular />}
                 fullWidth
                 appearance="outline"
+                colorScheme="success"
                 onClick={() => toggleSessions(true)}
               >
                 Choose Account
