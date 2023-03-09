@@ -22,6 +22,13 @@ const getButtonStyle = (appearance, size = "medium", colorScheme = "") => ({
       size === null ? "noSize" : size
     ],
   },
+  // no squeezy styles for link button
+  ...(appearance !== "link" && {
+    transition: "transform 0.1s ease",
+    ":active": {
+      transform: "scale(0.99)",
+    },
+  }),
 });
 
 const StyledButton = styled(Button)((props) => {

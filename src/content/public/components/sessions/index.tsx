@@ -1,4 +1,3 @@
-import { Divider } from "@fluentui/react-components";
 import { FlexColumn } from "src/components";
 import { ACCOUNT_SESSIONS } from "src/model";
 import { styled } from "src/utils";

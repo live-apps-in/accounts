@@ -25,7 +25,6 @@ const StyledCustomCard = styled(CustomCard)`
   ${mediaQuery.up("sm")} {
     padding: 30px 50px;
   }
-  margin-top: -${layoutSettings.header.height};
   box-shadow: none;
   form > div {
     width: 100%;

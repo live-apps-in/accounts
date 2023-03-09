@@ -1,6 +1,6 @@
 import { ROUTES_DEFINITION } from "src/routes";
 import { Helmet } from "react-helmet";
-import { PublicLayout } from "src/layouts";
+import { AuthLayout, PublicLayout } from "src/layouts";
 import {
   LoginPortalContent,
   OTPPortal,
@@ -16,9 +16,9 @@ export const publicRoutes: ROUTES_DEFINITION = [
         <Helmet>
           <title>Accounts LiveApps - Login</title>
         </Helmet>
-        <PublicLayout>
+        <AuthLayout>
           <LoginPortalContent />
-        </PublicLayout>
+        </AuthLayout>
       </>
     ),
   },
@@ -29,9 +29,9 @@ export const publicRoutes: ROUTES_DEFINITION = [
         <Helmet>
           <title>Accounts LiveApps - Signup</title>
         </Helmet>
-        <PublicLayout>
+        <AuthLayout>
           <SignupPortalContent />
-        </PublicLayout>
+        </AuthLayout>
       </>
     ),
   },

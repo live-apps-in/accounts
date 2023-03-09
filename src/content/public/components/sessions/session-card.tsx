@@ -7,7 +7,7 @@ import { ACCOUNTS_SESSION_DETAILS } from "src/model";
 import { styled } from "src/utils";
 
 const StyledSessionCard = styled(CustomButton)`
-  border-radius: 30px;
+  border-radius: 10px;
   max-width: 100%;
   width: 100%;
   height: fit-content;

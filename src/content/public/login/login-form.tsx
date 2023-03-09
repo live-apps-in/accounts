@@ -11,7 +11,6 @@ import {
 } from "src/components";
 import { authConfig } from "src/config";
 import { useAccountsAuth } from "src/hooks";
-import { layoutSettings } from "src/layouts/public/layout-settings";
 import { liveAppsAccountsPortalSigninSchema } from "src/schema";
 import {
   appendSearchString,
@@ -31,7 +30,6 @@ const StyledCustomCard = styled(CustomCard)`
   ${mediaQuery.up("sm")} {
     padding: 30px 50px;
   }
-  margin-top: -${layoutSettings.header.height};
   box-shadow: none;
   form > div {
     width: 100%;
@@ -115,16 +113,20 @@ export const LoginFormContent: React.FC = () => {
                 formik={formik}
                 validationSchema={liveAppsAccountsPortalSigninSchema}
               />
-              <CustomButton fullWidth type="submit" loading={submitting}>
+              <CustomButton
+                shape="circular"
+                fullWidth
+                type="submit"
+                loading={submitting}
+              >
                 Signin with Live apps
               </CustomButton>
             </form>
-            {/* <StyledFooterContainer> */}
             {sessions.length > 0 && (
               <CustomButton
                 icon={<CursorClick24Regular />}
+                shape="circular"
                 fullWidth
-                appearance="outline"
                 colorScheme="success"
                 onClick={() => toggleSessions(true)}
               >
@@ -141,7 +143,6 @@ export const LoginFormContent: React.FC = () => {
             >
               Signup with a New Account
             </CustomButton>
-            {/* </StyledFooterContainer> */}
           </>
         )}
       </StyledCustomCard>
