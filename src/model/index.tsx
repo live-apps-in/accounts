@@ -2,7 +2,6 @@
 // In other words, app-specific model definitions goes here
 
 import { FLASH_EVENT_PROPS, MODAL_EVENT_PROPS } from "src/components";
-import { AUTH_PROVIDER } from "src/config";
 
 // redux
 // #rbac-setup
@@ -19,12 +18,6 @@ export interface AUTH_DATA {
   platform: "ping" | "accounts";
   image?: string | null;
 }
-
-// data resolved from social auth services
-export type O_AUTH_DATA = {
-  token: string;
-  provider: AUTH_PROVIDER;
-};
 
 export interface AUTH_STATE {
   isInitialized: boolean;
@@ -62,13 +55,6 @@ export type LOGIN_AUTH_PROPS = {
 
 export interface USE_AUTH_PARAMS {
   isOAuth?: boolean;
-}
-
-export interface USE_O_AUTH_RETURN_TYPE extends AUTH_STATE {
-  initialize: (options?: USE_AUTH_OPTIONS) => Promise<AUTH_DATA>;
-  authenticate: () => Promise<AUTH_DATA>;
-  logout: (options?: USE_AUTH_OPTIONS) => Promise<void>;
-  getOAuthUrl: (provider: AUTH_PROVIDER) => string;
 }
 
 export interface USE_AUTH_RETURN_TYPE extends AUTH_STATE {
