@@ -1,4 +1,4 @@
-import { CustomText, XYCenter } from "src/components";
+import { AnimatedText, CustomText, XYCenter } from "src/components";
 import { customizedTheme as theme } from "src/theme";
 import { styled } from "src/utils";
 
@@ -31,9 +31,9 @@ const GlassCard = styled("div")`
 `;
 
 const LiveAppsGradient = styled("span")`
-  background: linear-gradient(90deg, #4ac7fa 0%, #e649f5 100%);
-  background-clip: text;
-  text-fill-color: transparent;
+  background: -webkit-linear-gradient(90deg, #4ac7fa 0%, #e649f5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: bold;
 `;
 

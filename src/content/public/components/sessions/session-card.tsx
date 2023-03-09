@@ -53,7 +53,7 @@ export const SessionCard: React.FC<
     <StyledSessionCard
       onClick={isAddAccount ? () => toggleSessions(false) : undefined}
       href={generatedHref}
-      appearance="outline"
+      appearance="transparent"
     >
       <div>
         {isAddAccount ? (

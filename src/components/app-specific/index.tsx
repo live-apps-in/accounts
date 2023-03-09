@@ -6,3 +6,4 @@ export * from "./redirect";
 export * from "./empty-message";
 export * from "./card-spinner";
 export * from "./social-links-footer";
+export * from "./animated-text";
