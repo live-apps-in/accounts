@@ -1,8 +1,8 @@
 # Accounts - Live Apps
 
-Authentication service for apps under live apps
+Authentication service for apps under LiveApps
 
-### [Documentation for Accounts - Live Apps](https://exciting-bassoon-bbe.notion.site/Accounts-Live-Apps-bc87388482a847ce91e902e80ff10951)
+### [Documentation for Accounts - LiveApps](https://exciting-bassoon-bbe.notion.site/Accounts-Live-Apps-bc87388482a847ce91e902e80ff10951)
 ### [Live Demo](https://accounts.jaga.live/)
 
 ## Technologies Used
